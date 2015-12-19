@@ -51,7 +51,7 @@ public class ClassFileLoader {
         short nameIndex = dis.readShort();
         int length = dis.readInt();
 
-        ConstantUTF8 cs = (ConstantUTF8) classFile.constants[nameIndex];
+        ConstantUtf8 cs = (ConstantUtf8) classFile.constants[nameIndex];
         switch (cs.string) {
             case "ConstantValue": {
                 ConstantValue attribute = new ConstantValue(nameIndex, length);
@@ -77,7 +77,8 @@ public class ClassFileLoader {
             }
 
             case "Exceptions": {
-                cz.cvut.fit.run.vm.classfile.attribute.Exception exception = new cz.cvut.fit.run.vm.classfile.attribute.Exception(nameIndex, length);
+                cz.cvut.fit.run.vm.classfile.attribute.Exception exception =
+                        new cz.cvut.fit.run.vm.classfile.attribute.Exception(nameIndex, length);
                 exception.exceptionIndexes = new short[dis.readShort()];
                 for (int i = 0; i < exception.exceptionIndexes.length; i++) {
                     exception.exceptionIndexes[i] = dis.readShort();
@@ -157,7 +158,7 @@ public class ClassFileLoader {
                     short stringLength = dis.readShort();
                     byte[] bytes = new byte[stringLength];
                     dis.read(bytes, 0, stringLength);
-                    classFile.constants[i] = new ConstantUTF8(constantType, new String(bytes, StandardCharsets.UTF_8));
+                    classFile.constants[i] = new ConstantUtf8(constantType, new String(bytes, StandardCharsets.UTF_8));
                     break;
                 }
                 case 3: {
@@ -227,7 +228,8 @@ public class ClassFileLoader {
     }
 
     protected boolean isJavaClassFile(DataInputStream dis) throws IOException {
-        return dis.readByte() == (byte) 0xCA && dis.readByte() == (byte) 0xFE && dis.readByte() == (byte) 0xBA && dis.readByte() == (byte) 0xBE;
+        return dis.readByte() == (byte) 0xCA && dis.readByte() == (byte) 0xFE
+                && dis.readByte() == (byte) 0xBA && dis.readByte() == (byte) 0xBE;
     }
 
     protected void loadVersion(ClassFile classFile, DataInputStream dis) throws IOException {

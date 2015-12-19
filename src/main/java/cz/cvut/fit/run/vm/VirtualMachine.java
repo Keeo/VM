@@ -9,15 +9,15 @@ import java.io.IOException;
 /**
  * Created by Keo on 8.12.2015.
  */
-public class VM {
+public class VirtualMachine {
     ClassProvider classProvider = new ClassProvider(new ClassFileLoader());
 
     public static void main(String[] args) throws IOException {
-        VM vm = new VM(args);
-        vm.run();
+        VirtualMachine virtualMachine = new VirtualMachine(args);
+        virtualMachine.run();
     }
 
-    public VM(String[] classFiles) throws IOException {
+    public VirtualMachine(String[] classFiles) throws IOException {
         for (String classFile : classFiles) {
             classProvider.addClassFileFromPath(classFile);
         }

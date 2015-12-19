@@ -2,12 +2,10 @@ package cz.cvut.fit.run.vm;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Keo on 9.12.2015.
  */
-public class VMTest {
+public class VirtualMachineTest {
 
     String satSolver;
     String expression;
@@ -20,6 +18,6 @@ public class VMTest {
 
     @Test
     public void testMain() throws Exception {
-        VM.main(new String[]{satSolver, expression});
+        VirtualMachine.main(new String[]{satSolver, expression});
     }
 }
