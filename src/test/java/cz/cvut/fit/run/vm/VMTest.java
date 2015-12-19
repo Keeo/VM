@@ -14,8 +14,8 @@ public class VMTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        satSolver = "src\\test\\fixtures\\sat\\SatSolver.class";
-        expression = "src\\test\\fixtures\\sat\\Expression.class";
+        satSolver = "src/test/fixtures/sat/SatSolver.class";
+        expression = "src/test/fixtures/sat/Expression.class";
     }
 
     @Test
