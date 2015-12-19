@@ -19,8 +19,8 @@ public class ClassFileLoaderTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        satSolverClass = new FileInputStream("src\\test\\fixtures\\sat\\SatSolver.class");
-        expressionClass = new FileInputStream("src\\test\\fixtures\\sat\\Expression.class");
+        satSolverClass = new FileInputStream("src/test/fixtures/sat/SatSolver.class");
+        expressionClass = new FileInputStream("src/test/fixtures/sat/Expression.class");
     }
 
     @org.junit.Test
