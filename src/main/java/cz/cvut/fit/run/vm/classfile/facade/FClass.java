@@ -2,7 +2,7 @@ package cz.cvut.fit.run.vm.classfile.facade;
 
 import cz.cvut.fit.run.vm.classfile.ClassFile;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantClass;
-import cz.cvut.fit.run.vm.classfile.constant.ConstantUTF8;
+import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
 
 /**
  * Created by Keo on 9.12.2015.
@@ -16,8 +16,8 @@ public class FClass {
 
     public String getFullClassName() {
         ConstantClass constantClass = (ConstantClass) classFile.constants[classFile.thisClassIndex];
-        ConstantUTF8 constantUTF8 = (ConstantUTF8) classFile.constants[constantClass.index];
-        return constantUTF8.string;
+        ConstantUtf8 constantUtf8 = (ConstantUtf8) classFile.constants[constantClass.index];
+        return constantUtf8.string;
     }
 
     public FMethod[] getMethods() {
