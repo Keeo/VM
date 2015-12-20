@@ -50,13 +50,13 @@ public class SatSolver {
                 shelf[letter - 97] = true;
             }
         }
-        int counter = 0;
+        int variableCount = 0;
         for (int i = 0; i < shelf.length; i++) {
             if (shelf[i]) {
-                counter++;
+                variableCount++;
             }
         }
-        return counter;
+        return variableCount;
     }
 
     public static Expression buildTree(String sat) {
@@ -68,34 +68,25 @@ public class SatSolver {
                 continue;
             }
 
-            if (Character.isLetter(character)) {
-                Expression expression = new Expression();
-                expression.name = character;
-                stack.push(expression);
-            } else {
-                switch (character) {
-                    case '&':
-                    case '|': {
-                        Expression expression = new Expression();
-                        expression.operator = character == '&' ? AND : OR;
-                        expression.right = stack.pop();
-                        expression.left = stack.pop();
-                        stack.push(expression);
-                        break;
-                    }
+            Expression expression = new Expression();
+            switch (character) {
+                case '&':
+                case '|':
+                    expression.operator = character == '&' ? AND : OR;
+                    expression.right = stack.pop();
+                    expression.left = stack.pop();
+                    break;
 
-                    case '!': {
-                        Expression expression = new Expression();
-                        expression.operator = NOT;
-                        expression.left = stack.pop();
-                        stack.push(expression);
-                        break;
-                    }
+                case '!':
+                    expression.operator = NOT;
+                    expression.left = stack.pop();
+                    break;
 
-                    default:
-                        throw new RuntimeException("Unknown character: " + character);
-                }
+                default:
+                    expression.name = character;
+                    break;
             }
+            stack.push(expression);
         }
 
         return stack.pop();
