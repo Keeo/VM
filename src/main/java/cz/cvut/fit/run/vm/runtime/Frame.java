@@ -1,6 +1,8 @@
 package cz.cvut.fit.run.vm.runtime;
 
 import cz.cvut.fit.run.vm.classfile.facade.FMethod;
+import cz.cvut.fit.run.vm.runtime.instruction.Instruction;
+import cz.cvut.fit.run.vm.runtime.instruction.InstructionBuilder;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
 
 import java.util.Stack;
@@ -10,13 +12,18 @@ import java.util.Stack;
  */
 public class Frame {
     int pc = 0;
-    Stack<Value> stack = new Stack<>();
+    public Stack<Value> stack;
     Value[] locals;
-    FMethod fMethod;
+    public FMethod fMethod;
 
-    public Frame(FMethod fMethod, Stack<Value> stack) {
+    public Frame(FMethod fMethod) {
         this.fMethod = fMethod;
-        this.stack = stack;
-        // todo: initialize locals array, fMethod should provide max local variables
+        //this.stack = new Stack<>();
+        this.locals = new Value[fMethod.getMaxLocals()];
+    }
+
+    public Instruction popInstruction() {
+        InstructionBuilder instructionBuilder = new InstructionBuilder();
+        return instructionBuilder.build(fMethod.getCode(), pc);
     }
 }

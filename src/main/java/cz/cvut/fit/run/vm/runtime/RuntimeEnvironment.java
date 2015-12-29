@@ -8,9 +8,9 @@ import cz.cvut.fit.run.vm.classfile.ClassProvider;
 public class RuntimeEnvironment {
     Frame frame;
     ClassProvider classProvider;
-    ObjectHeap objectHeap;
+    Heap objectHeap;
 
-    public RuntimeEnvironment(Frame frame, ClassProvider classProvider, ObjectHeap objectHeap) {
+    public RuntimeEnvironment(Frame frame, ClassProvider classProvider, Heap objectHeap) {
         this.frame = frame;
         this.classProvider = classProvider;
         this.objectHeap = objectHeap;

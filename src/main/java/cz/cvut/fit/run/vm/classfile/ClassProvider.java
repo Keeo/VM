@@ -23,6 +23,7 @@ public class ClassProvider {
         ClassFile classFile = classFileLoader.loadClassFile(new FileInputStream(path));
         FClass fClass = new FClass(classFile);
         classes.put(fClass.getFullClassName(), fClass);
+        System.out.println("> Class loaded - " + fClass.getFullClassName());
     }
 
     public FMethod getMainMethod() {

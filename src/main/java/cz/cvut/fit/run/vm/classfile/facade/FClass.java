@@ -1,6 +1,7 @@
 package cz.cvut.fit.run.vm.classfile.facade;
 
 import cz.cvut.fit.run.vm.classfile.ClassFile;
+import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantClass;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
 
@@ -23,8 +24,12 @@ public class FClass {
     public FMethod[] getMethods() {
         FMethod[] fMethods = new FMethod[classFile.methods.length];
         for (int i = 0; i < fMethods.length; i++) {
-            fMethods[i] = new FMethod(classFile.methods[i], classFile.constants);
+            fMethods[i] = new FMethod(this, classFile.methods[i], classFile.constants);
         }
         return fMethods;
+    }
+
+    public Constant[] getConstants() {
+        return classFile.constants;
     }
 }

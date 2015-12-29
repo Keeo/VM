@@ -1,5 +1,7 @@
 package cz.cvut.fit.run.vm.classfile.attribute;
 
+import java.util.Arrays;
+
 /**
  * Created by Keo on 8.12.2015.
  */
@@ -22,4 +24,14 @@ public class Code extends Attribute {
         u2 catch_type;
     } exception_table[exception_table_length];
     */
+
+    @Override
+    public String toString() {
+        return "Code{" +
+                "maxStack=" + maxStack +
+                ", maxLocals=" + maxLocals +
+                ", code=" + Arrays.toString(code) +
+                ", attributes=" + Arrays.toString(attributes) +
+                '}';
+    }
 }
