@@ -2,6 +2,7 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.runtime.Frame;
+import cz.cvut.fit.run.vm.runtime.operant.Value;
 
 import java.util.Stack;
 
@@ -19,7 +20,8 @@ public class LdcInstruction extends Instruction {
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
         Constant[] constants = frame.fMethod.fClass.getConstants();
-        constants[index].getOperand(constants);
+        Value value = constants[index].getOperand(constants);
+        System.out.println(value);
         // todo: current code breaks here #1
         // System.exit(0);
     }

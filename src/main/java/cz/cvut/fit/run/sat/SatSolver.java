@@ -1,7 +1,5 @@
 package cz.cvut.fit.run.sat;
 
-import java.util.Stack;
-
 public class SatSolver {
     static final int AND = 1;
     static final int OR = 2;
@@ -60,7 +58,7 @@ public class SatSolver {
     }
 
     public static Expression buildTree(String sat) {
-        Stack<Expression> stack = new Stack<>();
+        Stack stack = new Stack();
 
         for (int i = 0; i < sat.length(); i++) {
             char character = sat.charAt(i);
