@@ -5,4 +5,8 @@ package cz.cvut.fit.run.vm.runtime.operant;
  */
 public class ValueInteger extends Value {
     int integer;
+
+    public ValueInteger(int integer) {
+        this.integer = integer;
+    }
 }

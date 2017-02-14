@@ -16,9 +16,7 @@ public class FClass {
     }
 
     public String getFullClassName() {
-        ConstantClass constantClass = (ConstantClass) classFile.constants[classFile.thisClassIndex];
-        ConstantUtf8 constantUtf8 = (ConstantUtf8) classFile.constants[constantClass.index];
-        return constantUtf8.string;
+        return this.convertConstantPointerToString(classFile.thisClassIndex);
     }
 
     public FMethod[] getMethods() {
@@ -27,6 +25,40 @@ public class FClass {
             fMethods[i] = new FMethod(this, classFile.methods[i], classFile.constants);
         }
         return fMethods;
+    }
+
+    public String convertConstantPointerToString(int index) {
+        Constant constant = classFile.constants[index];
+
+        if (constant instanceof ConstantClass) {
+            ConstantClass constantClass = (ConstantClass) constant;
+            ConstantUtf8 constantUtf8 = (ConstantUtf8) classFile.constants[constantClass.index];
+            return constantUtf8.string;
+        }
+
+        if (constant instanceof ConstantUtf8) {
+            return ((ConstantUtf8) constant).string;
+        }
+
+        throw new RuntimeException("Unknown pointer to get string from: " + constant.getClass().getName());
+    }
+
+    public FMethod getMethod(String name) {
+        for(FMethod fMethod : getMethods()) {
+            if (fMethod.getName().equals(name)) {
+                return fMethod;
+            }
+        }
+
+        throw new RuntimeException("Method " + name + " was not found in class");
+    }
+
+    public FField[] getFields() {
+        FField[] fFields = new FField[classFile.fields.length];
+        for(int i = 0; i < fFields.length; i++) {
+            fFields[i] = new FField(this, classFile.fields[i]);
+        }
+        return fFields;
     }
 
     public Constant[] getConstants() {

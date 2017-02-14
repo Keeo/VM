@@ -26,6 +26,19 @@ public class ClassProvider {
         System.out.println("> Class loaded - " + fClass.getFullClassName());
     }
 
+    public void addGlobalClass(FClass fClass) {
+        classes.put(fClass.getFullClassName(), fClass);
+        System.out.println("> Global class loaded - " + fClass.getFullClassName());
+    }
+
+    public FClass getClass(String className) {
+        return classes.get(className);
+    }
+
+    public FMethod getMethod(String className, String methodName) {
+        return this.getClass(className).getMethod(methodName);
+    }
+
     public FMethod getMainMethod() {
         for (FClass fClass : classes.values()) {
             for (FMethod fMethod : fClass.getMethods()) {

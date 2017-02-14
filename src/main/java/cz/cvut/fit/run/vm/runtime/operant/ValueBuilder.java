@@ -1,5 +1,7 @@
 package cz.cvut.fit.run.vm.runtime.operant;
 
+import cz.cvut.fit.run.vm.VirtualMachine;
+import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.runtime.Heap;
 
 /**
@@ -23,7 +25,9 @@ public class ValueBuilder {
     }
 
     public ValueObjectReference buildObjectReference(String string) {
-        ValueObjectReference valueObjectReference = new ValueObjectReference();
+        FClass fClass = VirtualMachine.classProvider.getClass("java/lang/String");
+        ValueObjectReference valueObjectReference = heap.createObject(fClass);
+
         // todo: build value, store into heap and return pointer
         // heap.push(valueObjectReference);
         return null;

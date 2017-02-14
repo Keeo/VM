@@ -8,4 +8,13 @@ import cz.cvut.fit.run.vm.classfile.facade.FClass;
 public class ValueObjectReference extends Value {
     public int heap;
     public FClass reference;
+
+    public ValueObjectReference(FClass reference) {
+        this.reference = reference;
+    }
+
+    public ValueObjectReference(FClass reference, int heap) {
+        this.reference = reference;
+        this.heap = heap;
+    }
 }

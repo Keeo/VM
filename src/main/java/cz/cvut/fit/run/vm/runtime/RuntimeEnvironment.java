@@ -9,20 +9,14 @@ import java.util.Stack;
  */
 public class RuntimeEnvironment {
     Stack<Frame> frames = new Stack<>();
-    ClassProvider classProvider;
     Heap objectHeap;
 
-    public RuntimeEnvironment(Frame frame, ClassProvider classProvider, Heap objectHeap) {
-        this.classProvider = classProvider;
+    public RuntimeEnvironment(Frame frame, Heap objectHeap) {
         this.objectHeap = objectHeap;
         frames.push(frame);
     }
 
     public void execute() {
-        for (String s : this.classProvider.classes.keySet()) {
-            System.out.println(s);
-        }
-
         this.frames.peek().execute(frames);
     }
 }

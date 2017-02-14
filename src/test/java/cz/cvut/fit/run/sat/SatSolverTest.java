@@ -22,13 +22,13 @@ public class SatSolverTest {
 
     @Test
     public void testVariableCount() throws Exception {
-        int count = SatSolver.variableCount("ab&c&d");
+        int count = SatSolver.variableCount("ab&c&d".toCharArray());
         assertEquals(4, count);
     }
 
     @Test
     public void testBuildTree() throws Exception {
-        String tree = SatSolver.buildTree("ab&!c|").toString();
+        String tree = SatSolver.buildTree("ab&!c|".toCharArray()).toString();
         assertEquals("(!(a & b) | c)", tree);
     }
 

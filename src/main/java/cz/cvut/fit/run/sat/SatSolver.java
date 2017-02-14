@@ -12,19 +12,27 @@ public class SatSolver {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        String sat = "abc!d&|&";
+        char[] sat = {'a', 'b', 'c', '!', 'd', '&', '|', '&'};
         Expression expression = buildTree(sat);
-        System.out.println(expression);
+
         boolean[] solution = solve(expression, variableCount(sat));
         if (solution != null) {
             for (int i = 0; i < solution.length; i++) {
-                System.out.print((char) (97 + i));
+                print((char) (97 + i));
             }
             System.out.println();
             for (int i = 0; i < solution.length; i++) {
-                System.out.print(solution[i] ? '1' : '0');
+                print(solution[i] ? '1' : '0');
             }
         }
+    }
+
+    public static void print(char[] string) {
+        System.out.print(string.toString());
+    }
+
+    public static void print(char string) {
+        System.out.print(string);
     }
 
     public static boolean[] solve(Expression expression, int variableCount) {
@@ -40,10 +48,10 @@ public class SatSolver {
         return null;
     }
 
-    public static int variableCount(String sat) {
+    public static int variableCount(char[] sat) {
         boolean[] shelf = new boolean[25];
-        for (int i = 0; i < sat.length(); i++) {
-            char letter = sat.charAt(i);
+        for (int i = 0; i < sat.length; i++) {
+            char letter = sat[i];
             if (Character.isLetter(letter)) {
                 shelf[letter - 97] = true;
             }
@@ -57,11 +65,11 @@ public class SatSolver {
         return variableCount;
     }
 
-    public static Expression buildTree(String sat) {
+    public static Expression buildTree(char[] sat) {
         Stack stack = new Stack();
 
-        for (int i = 0; i < sat.length(); i++) {
-            char character = sat.charAt(i);
+        for (int i = 0; i < sat.length; i++) {
+            char character = sat[i];
             if (character == ' ') {
                 continue;
             }

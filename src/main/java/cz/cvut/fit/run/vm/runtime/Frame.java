@@ -12,9 +12,12 @@ import java.util.Stack;
  * Created by Keo on 9.12.2015.
  */
 public class Frame {
-    int pc = 0;
-    public Stack<Value> operandStack;
-    Value[] locals;
+    public int pc = 0;
+
+    public Stack<Value> operandStack = new Stack<>();
+
+    public Value[] locals;
+
     public FMethod fMethod;
 
     public Frame(FMethod fMethod) {
@@ -24,16 +27,21 @@ public class Frame {
 
     public Instruction popInstruction() {
         InstructionBuilder instructionBuilder = new InstructionBuilder();
-        return instructionBuilder.build(fMethod.getCode(), pc++);
+        return instructionBuilder.build(fMethod.getCode(), pc);
     }
 
     public void execute(Stack<Frame> frames) {
+        //for (byte b : fMethod.getCode()) {
+        //    System.out.println(Integer.toHexString(b));
+        //}
+        //System.exit(0);
+
         while (pc < this.fMethod.getCode().length) {
             Instruction instruction = this.popInstruction();
             instruction.execute(this, frames);
-            System.out.print("Executed exit");
+            //System.out.print("Executed exit");
             // todo: current code breaks here #2
-            break;
+            //break;
         }
     }
 }
