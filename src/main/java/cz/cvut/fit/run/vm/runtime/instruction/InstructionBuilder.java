@@ -14,6 +14,8 @@ public class InstructionBuilder {
         try {
             DataInputStream dis = new DataInputStream(new ByteArrayInputStream(code, pc, code.length - pc));
             switch (unsignedToBytes(dis.readByte())) {
+                case 0x0:
+                    return new Nop();
                 case 0x60:
                     return new IAdd();
                 case 0x64:
@@ -42,6 +44,10 @@ public class InstructionBuilder {
                     return new IStoreN(2);
                 case 0x3e:
                     return new IStoreN(3);
+                case 0x3:
+                    return new IConst(0);
+                case 0x6:
+                    return new IConst(3);
                 case 0x7:
                     return new IConst(4);
                 case 0x10:
@@ -52,7 +58,8 @@ public class InstructionBuilder {
                     throw new RuntimeException("Unknown instruction: " + Integer.toHexString(code[pc]));
             }
         } catch (IOException exception) {
-            throw new RuntimeException("Corrupted byte code");
+            //throw new RuntimeException("Corrupted byte code");
+            return null;
         }
     }
 

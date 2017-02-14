@@ -17,7 +17,7 @@ public class ILoadN extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] ILoadN");
+        System.out.println("[I] ILoadN n:" + n);
 
         Value value = frame.locals[n];
         frame.operandStack.push(value);

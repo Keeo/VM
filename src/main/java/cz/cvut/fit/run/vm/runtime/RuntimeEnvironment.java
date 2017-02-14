@@ -17,6 +17,8 @@ public class RuntimeEnvironment {
     }
 
     public void execute() {
-        this.frames.peek().execute(frames);
+        while(!frames.isEmpty()) {
+            this.frames.peek().execute(frames);
+        }
     }
 }

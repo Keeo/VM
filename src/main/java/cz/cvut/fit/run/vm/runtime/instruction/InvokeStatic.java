@@ -34,14 +34,18 @@ public class InvokeStatic extends Instruction {
 
         FMethod fMethod = VirtualMachine.classProvider.getMethod(className, methodName);
 
+        if (!fMethod.method.isStatic()) {
+            throw new RuntimeException("Method must be static.");
+        }
+
         if (fMethod.method.isNative()) {
             NativeMethods.invokeStatic(className, methodName, frame, stack);
         }
 
-        System.out.print(fMethod.method.isStatic());
-        System.out.print(fMethod.method.isNative());
+        Frame newFrame = new Frame(fMethod);
+        stack.push(newFrame);
 
-        System.exit(0);
+        //System.exit(0);
 
         frame.pc += 3;
     }

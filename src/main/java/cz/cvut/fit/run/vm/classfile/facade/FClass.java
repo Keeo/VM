@@ -74,4 +74,17 @@ public class FClass {
     public Constant[] getConstants() {
         return classFile.constants;
     }
+
+    /**
+     * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html#jvms-5.5
+     */
+    boolean isInitialized = false;
+    public void initialize() {
+        if (isInitialized) {
+            return;
+        }
+        isInitialized = true;
+
+        // todo: ?
+    }
 }

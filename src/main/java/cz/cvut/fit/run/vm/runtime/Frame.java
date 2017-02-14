@@ -36,9 +36,12 @@ public class Frame {
         //}
         //System.exit(0);
 
-        while (pc < this.fMethod.getCode().length) {
-            Instruction instruction = this.popInstruction();
-            instruction.execute(this, frames);
+        while (frames.peek().pc < frames.peek().fMethod.getCode().length) {
+            //Instruction instruction = this.popInstruction();
+            Instruction instruction = frames.peek().popInstruction();
+            if (instruction != null) {
+                instruction.execute(frames.peek(), frames);
+            }
             //System.out.print("Executed exit");
             // todo: current code breaks here #2
             //break;
