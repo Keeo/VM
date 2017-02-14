@@ -36,12 +36,16 @@ public class Frame {
         //}
         //System.exit(0);
 
-        while (frames.peek().pc < frames.peek().fMethod.getCode().length) {
+        while (!frames.isEmpty() && frames.peek().pc < frames.peek().fMethod.getCode().length) {
             //Instruction instruction = this.popInstruction();
-            Instruction instruction = frames.peek().popInstruction();
-            if (instruction != null) {
-                instruction.execute(frames.peek(), frames);
-            }
+
+            InstructionBuilder instructionBuilder = new InstructionBuilder();
+            //System.out.println(frames.peek().pc);
+            Instruction instruction = instructionBuilder.build(frames.peek().fMethod.getCode(), frames.peek().pc);
+            //System.out.println(instruction.getClass().getName());
+            //System.out.println("--");
+
+            instruction.execute(frames.peek(), frames);
             //System.out.print("Executed exit");
             // todo: current code breaks here #2
             //break;

@@ -12,6 +12,11 @@ public class Return extends Instruction {
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
         System.out.println("[I] Return");
-        frame.pc += 1;
+
+        frame.operandStack.clear();
+        frame.pc = 0;
+        stack.pop();
+
+        //frame.pc += 1;
     }
 }

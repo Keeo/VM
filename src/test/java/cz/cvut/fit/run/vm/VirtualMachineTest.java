@@ -22,16 +22,25 @@ public class VirtualMachineTest {
 
     @Test
     public void testMain() throws Exception {
-        VirtualMachine.main(new String[]{satSolver, expression, expressionLink, stack});
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{satSolver, expression, expressionLink, stack});
+        virtualMachine.run();
     }
 
     @Test
     public void simple() throws Exception {
-        VirtualMachine.main(new String[]{"src/test/fixtures/demo/Simple.class"});
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Simple.class"});
+        virtualMachine.run();
     }
 
     @Test
     public void math() throws Exception {
-        VirtualMachine.main(new String[]{"src/test/fixtures/demo/Math.class"});
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Math.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void function() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Function.class"});
+        virtualMachine.run();
     }
 }

@@ -22,6 +22,8 @@ public class InstructionBuilder {
                     return new ISub();
                 case 0x68:
                     return new IMul();
+                case 0xac:
+                    return new IReturn();
                 case 0xb1:
                     return new Return();
                 case 0xb2:
@@ -30,6 +32,8 @@ public class InstructionBuilder {
                     return new InvokeStatic(dis.readByte(), dis.readByte());
                 case 0x15:
                     return new ILoad(dis.readByte());
+                case 0x1a:
+                    return new ILoadN(0);
                 case 0x1b:
                     return new ILoadN(1);
                 case 0x1c:
@@ -58,8 +62,8 @@ public class InstructionBuilder {
                     throw new RuntimeException("Unknown instruction: " + Integer.toHexString(code[pc]));
             }
         } catch (IOException exception) {
-            //throw new RuntimeException("Corrupted byte code");
-            return null;
+            throw new RuntimeException("Corrupted byte code");
+            //return null;
         }
     }
 

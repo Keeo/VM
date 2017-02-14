@@ -19,6 +19,6 @@ public class IConst extends Instruction {
     public void execute(Frame frame, Stack<Frame> stack) {
         frame.operandStack.push(new ValueInteger(constant));
 
-        frame.pc += 2;
+        frame.pc += 1;
     }
 }

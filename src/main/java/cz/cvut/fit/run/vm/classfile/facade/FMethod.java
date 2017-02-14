@@ -5,6 +5,7 @@ import cz.cvut.fit.run.vm.classfile.attribute.Attribute;
 import cz.cvut.fit.run.vm.classfile.attribute.Code;
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -54,8 +55,30 @@ public class FMethod {
         return getCodeAttribute().code;
     }
 
+    /**
+     * (IDLjava/lang/Thread;)Ljava/lang/Object;
+     * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.3
+     */
+    public int getParameterCount() {
+        String description = this.getDescription();
+        String parameters = description.substring(1, description.indexOf(')'));
+        int length = parameters.length();
+
+        if (length > 4) {
+            System.out.println("Param count is: " + length + " for: " + description);
+            throw new NotImplementedException();
+        }
+
+        return parameters.length();
+    }
+
     public String getName() {
         ConstantUtf8 constantUtf8 = (ConstantUtf8) constants[method.nameIndex];
+        return constantUtf8.string;
+    }
+
+    public String getDescription() {
+        ConstantUtf8 constantUtf8 = (ConstantUtf8) constants[method.descriptionIndex];
         return constantUtf8.string;
     }
 }

@@ -1,9 +1,12 @@
 package cz.cvut.fit.run.vm.classfile.facade;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import cz.cvut.fit.run.vm.classfile.ClassFile;
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantClass;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
+import org.omg.CORBA.FREE_MEM;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by Keo on 9.12.2015.
@@ -71,6 +74,20 @@ public class FClass {
         throw new RuntimeException("Field " + name + " was not found in class " + this.getFullClassName());
     }
 
+    /**\
+     * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-2.html#jvms-2.9
+     */
+    public FMethod getClassInitMethod() {
+        for(FMethod fMethod : this.getMethods()) {
+            if (fMethod.getName().equals("<cinit>") &&
+                    fMethod.getDescription().equals("()V")) {
+                return fMethod;
+            }
+        }
+        System.out.println("Class " + this.getFullClassName() + " is without init method.");
+        return null;
+    }
+
     public Constant[] getConstants() {
         return classFile.constants;
     }
@@ -85,6 +102,9 @@ public class FClass {
         }
         isInitialized = true;
 
-        // todo: ?
+        FMethod initMethod = this.getClassInitMethod();
+        if (initMethod != null) {
+            throw new NotImplementedException();
+        }
     }
 }

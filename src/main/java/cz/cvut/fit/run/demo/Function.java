@@ -11,7 +11,8 @@ public class Function {
         printNumber(a);
         int c = returnNumber();
         int d = combineNumber(a, b);
-        print(c + d);
+        int e = getFirstNumber(d, a, b);
+        print(c + e);
     }
 
     public static void preprint() {
@@ -28,6 +29,10 @@ public class Function {
 
     public static int combineNumber(int a, int b) {
         return a + b;
+    }
+
+    public static int getFirstNumber(int a, int b, int c) {
+        return a;
     }
 
     public static native void print(int a);

@@ -7,6 +7,7 @@ import cz.cvut.fit.run.vm.classfile.constant.ConstantNameAndType;
 import cz.cvut.fit.run.vm.classfile.facade.FMethod;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.NativeMethods;
+import cz.cvut.fit.run.vm.runtime.operant.Value;
 
 import java.util.Stack;
 
@@ -40,9 +41,20 @@ public class InvokeStatic extends Instruction {
 
         if (fMethod.method.isNative()) {
             NativeMethods.invokeStatic(className, methodName, frame, stack);
+            frame.pc += 3;
+            return;
         }
 
         Frame newFrame = new Frame(fMethod);
+        int parameterCount = fMethod.getParameterCount();
+        for (int i = 0; i < parameterCount; ++i) {
+            newFrame.locals[parameterCount - i - 1] = frame.operandStack.pop();
+        }
+
+
+        fMethod.fClass.initialize();
+
+
         stack.push(newFrame);
 
         //System.exit(0);
