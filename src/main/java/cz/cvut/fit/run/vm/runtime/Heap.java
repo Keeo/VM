@@ -5,7 +5,9 @@ import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.classfile.facade.FField;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
+import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -14,14 +16,14 @@ import java.util.ArrayList;
  */
 public class Heap {
 
-    public ArrayList<Value> heap;
+    public Value[] heap;
 
     private int position;
 
     private static Heap instance;
 
     private Heap() {
-        heap = new ArrayList<>();
+        heap = new Value[999];
         position = 0;
     }
 
@@ -38,12 +40,16 @@ public class Heap {
         for (int i = 0; i < fFields.length; ++i) {
             FField fField = fFields[i];
             switch (fField.getDescription()) {
-                case "[":
-                    System.out.print("yey string");
+                case "I":
+                    heap[position] = new ValueInteger(0);
+                    position++;
                     break;
+                default:
+                    System.out.println(fField.getDescription());
+                    throw new NotImplementedException();
             }
         }
 
-        return null;
+        return valueObjectReference;
     }
 }

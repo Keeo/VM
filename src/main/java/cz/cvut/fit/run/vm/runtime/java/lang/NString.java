@@ -8,24 +8,11 @@ import cz.cvut.fit.run.vm.classfile.facade.FMethod;
 /**
  * Created by Keo on 13.2.2017.
  */
-public class NString extends FClass {
-    public NString() {
-        super(null);
-    }
+public class NString extends Object {
 
     @Override
     public String getFullClassName() {
         return "java/lang/String";
-    }
-
-    @Override
-    public FMethod[] getMethods() {
-        return new FMethod[]{};
-    }
-
-    @Override
-    public Constant[] getConstants() {
-        return new Constant[]{};
     }
 
     @Override

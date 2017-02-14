@@ -56,8 +56,26 @@ public class InstructionBuilder {
                     return new IConst(3);
                 case 0x7:
                     return new IConst(4);
+                case 0x8:
+                    return new IConst(5);
+                case 0xbb:
+                    return new New(dis.readByte(), dis.readByte());
+                case 0x59:
+                    return new Dup();
+                case 0xb6:
+                    return new InvokeVirtual(dis.readByte(), dis.readByte());
+                case 0xb7:
+                    return new InvokeSpecial(dis.readByte(), dis.readByte());
+                case 0x2a:
+                    return new ALoadN(0);
+                case 0x2b:
+                    return new ALoadN(1);
+                case 0x4c:
+                    return new AStoreN(1);
                 case 0x10:
                     return new BiPush(dis.readByte());
+                case 0xb4:
+                    return new GetField(dis.readByte(), dis.readByte());
                 //case 0x12:
                 //    return new LdcInstruction(dis.readByte());
                 default:

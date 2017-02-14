@@ -10,6 +10,10 @@ public class ValueInteger extends Value {
         this.integer = integer;
     }
 
+    public Value copy() {
+        return new ValueInteger(this.integer);
+    };
+
     @Override
     public String toString() {
         return Integer.toString(integer);

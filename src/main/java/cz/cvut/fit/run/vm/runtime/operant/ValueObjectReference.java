@@ -13,6 +13,10 @@ public class ValueObjectReference extends Value {
         this.reference = reference;
     }
 
+    public Value copy() {
+        return new ValueObjectReference(this.reference, this.heap);
+    }
+
     public ValueObjectReference(FClass reference, int heap) {
         this.reference = reference;
         this.heap = heap;

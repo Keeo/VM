@@ -49,4 +49,10 @@ public class VirtualMachineTest {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/SimpleIO.class"});
         virtualMachine.run();
     }
+
+    @Test
+    public void newClassSimple() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/NewClassSimple.class"});
+        virtualMachine.run();
+    }
 }

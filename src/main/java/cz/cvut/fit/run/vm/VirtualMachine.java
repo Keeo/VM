@@ -7,6 +7,7 @@ import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
 import cz.cvut.fit.run.vm.runtime.RuntimeEnvironment;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
+import cz.cvut.fit.run.vm.runtime.java.lang.Object;
 
 import java.io.IOException;
 
@@ -35,6 +36,7 @@ public class VirtualMachine {
             classProvider.addClassFileFromPath(classFile);
         }
 
+        classProvider.addGlobalClass(new Object());
         classProvider.addGlobalClass(new NString());
     }
 

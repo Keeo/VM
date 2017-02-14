@@ -21,5 +21,5 @@ public class NewClass {
         print(this.number);
     }
 
-    public static  native void print(int n);
+    public static native void print(int n);
 }

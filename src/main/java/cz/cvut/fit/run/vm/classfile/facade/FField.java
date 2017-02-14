@@ -16,9 +16,7 @@ public class FField {
     }
 
     public String getDescription() {
-        System.out.println("Trying getDescription on FField");
-        ConstantUtf8 constantUtf8 = (ConstantUtf8) fClass.classFile.constants[field.nameIndex];
-        System.out.println("Trying getDescription returned: " + constantUtf8.string);
+        ConstantUtf8 constantUtf8 = (ConstantUtf8) fClass.classFile.constants[field.descriptionIndex];
         return constantUtf8.string;
     }
 
