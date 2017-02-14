@@ -22,5 +22,10 @@ public class FField {
         return constantUtf8.string;
     }
 
+    public String getName() {
+        ConstantUtf8 constantUtf8 = (ConstantUtf8) fClass.getConstants()[field.nameIndex];
+        return constantUtf8.string;
+    }
+
     public FField() {}
 }

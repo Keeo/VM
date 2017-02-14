@@ -17,4 +17,8 @@ public class ValueObjectReference extends Value {
         this.reference = reference;
         this.heap = heap;
     }
+
+    public boolean isReference() {
+        return true;
+    }
 }

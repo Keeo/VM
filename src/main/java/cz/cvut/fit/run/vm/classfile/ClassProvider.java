@@ -1,6 +1,7 @@
 package cz.cvut.fit.run.vm.classfile;
 
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
+import cz.cvut.fit.run.vm.classfile.facade.FField;
 import cz.cvut.fit.run.vm.classfile.facade.FMethod;
 
 import java.io.FileInputStream;
@@ -37,6 +38,10 @@ public class ClassProvider {
 
     public FMethod getMethod(String className, String methodName) {
         return this.getClass(className).getMethod(methodName);
+    }
+
+    public FField getField(String className, String fieldName) {
+        return this.getClass(className).getField(fieldName);
     }
 
     public FMethod getMainMethod() {

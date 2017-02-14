@@ -50,7 +50,7 @@ public class FClass {
             }
         }
 
-        throw new RuntimeException("Method " + name + " was not found in class");
+        throw new RuntimeException("Method " + name + " was not found in class " + this.getFullClassName());
     }
 
     public FField[] getFields() {
@@ -59,6 +59,16 @@ public class FClass {
             fFields[i] = new FField(this, classFile.fields[i]);
         }
         return fFields;
+    }
+
+    public FField getField(String name) {
+        for(FField fField : getFields()) {
+            if (fField.getName().equals(name)) {
+                return fField;
+            }
+        }
+
+        throw new RuntimeException("Field " + name + " was not found in class " + this.getFullClassName());
     }
 
     public Constant[] getConstants() {

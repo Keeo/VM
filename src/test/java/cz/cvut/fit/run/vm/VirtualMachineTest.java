@@ -24,4 +24,14 @@ public class VirtualMachineTest {
     public void testMain() throws Exception {
         VirtualMachine.main(new String[]{satSolver, expression, expressionLink, stack});
     }
+
+    @Test
+    public void simple() throws Exception {
+        VirtualMachine.main(new String[]{"src/test/fixtures/demo/Simple.class"});
+    }
+
+    @Test
+    public void math() throws Exception {
+        VirtualMachine.main(new String[]{"src/test/fixtures/demo/Math.class"});
+    }
 }

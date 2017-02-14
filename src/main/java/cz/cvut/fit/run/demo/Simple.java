@@ -1,6 +1,6 @@
 package cz.cvut.fit.run.demo;
 
-public class Demo {
+public class Simple {
     public static void main(String[] args) {
         int a = 6;
         print(a);
