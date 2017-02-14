@@ -28,6 +28,8 @@ public class InstructionBuilder {
                     return new Return();
                 case 0xb2:
                     return new GetStatic(dis.readByte(), dis.readByte());
+                case 0xb5:
+                    return new PutField(dis.readByte(), dis.readByte());
                 case 0xb8:
                     return new InvokeStatic(dis.readByte(), dis.readByte());
                 case 0x15:

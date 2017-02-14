@@ -55,6 +55,12 @@ public class FMethod {
         return getCodeAttribute().code;
     }
 
+    public void printCode() {
+        for (byte b : getCode()) {
+            System.out.println(Integer.toHexString(b));
+        }
+    }
+
     /**
      * (IDLjava/lang/Thread;)Ljava/lang/Object;
      * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.3

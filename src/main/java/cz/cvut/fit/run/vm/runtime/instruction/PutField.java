@@ -16,17 +16,17 @@ import java.util.Stack;
  * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html#jvms-6.5.getfield
  * Created by Keo on 14.2.2017.
  */
-public class GetField extends Instruction {
+public class PutField extends Instruction {
     int index;
 
-    public GetField(byte indexbyte1, byte indexbyte2) {
+    public PutField(byte indexbyte1, byte indexbyte2) {
         this.index = (indexbyte1 << 8) | indexbyte2;
     }
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] GetField");
-        ValueObjectReference valueObjectReference = (ValueObjectReference) frame.operandStack.pop();
+        System.out.println("[I] PutField");
+        Value value = frame.operandStack.pop();
 
         Constant[] constants = frame.fMethod.fClass.getConstants();
         ConstantFieldref constantFieldref = (ConstantFieldref) constants[index];
@@ -48,9 +48,7 @@ public class GetField extends Instruction {
 
         Heap heap = Heap.getInstance();
 
-        Value value = heap.heap[valueObjectReference.heap + position];
-        assert(value instanceof ValueInteger);
-        frame.operandStack.push(value);
+        System.exit(0);
 
         frame.pc += 3;
     }

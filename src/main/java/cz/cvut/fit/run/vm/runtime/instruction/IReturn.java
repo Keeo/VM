@@ -15,6 +15,7 @@ public class IReturn extends Instruction {
         System.out.println("[I] IReturn");
 
         ValueInteger integer = (ValueInteger) frame.operandStack.pop();
+        frame.operandStack.clear();
         frame.pc = 0;
         stack.pop();
         stack.peek().operandStack.push(integer);

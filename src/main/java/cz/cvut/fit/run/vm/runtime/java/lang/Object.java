@@ -41,7 +41,7 @@ public class Object extends FClass {
 
             @Override
             public byte[] getCode() {
-                return new byte[0];
+                return new byte[]{(byte)0xb1};
             }
 
             @Override

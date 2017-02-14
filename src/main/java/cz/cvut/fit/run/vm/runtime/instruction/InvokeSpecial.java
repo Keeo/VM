@@ -35,6 +35,8 @@ public class InvokeSpecial extends Instruction {
         FMethod fMethod = fClass.getMethod(methodName);
         assert(fMethod != null);
 
+        //fMethod.printCode();
+
         Frame newFrame = new Frame(fMethod);
         newFrame.locals[0] = frame.operandStack.pop();
         int parameterCount = fMethod.getParameterCount();
@@ -44,7 +46,7 @@ public class InvokeSpecial extends Instruction {
 
         fClass.initialize();
 
-        //stack.push(newFrame);// hmm?
+        stack.push(newFrame);
         frame.pc += 3;
     }
 }
