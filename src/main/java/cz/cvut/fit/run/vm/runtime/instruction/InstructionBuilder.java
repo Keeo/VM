@@ -50,6 +50,8 @@ public class InstructionBuilder {
                     return new IStoreN(3);
                 case 0x3:
                     return new IConst(0);
+                case 0x4:
+                    return new IConst(1);
                 case 0x6:
                     return new IConst(3);
                 case 0x7:

@@ -43,4 +43,10 @@ public class VirtualMachineTest {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Function.class"});
         virtualMachine.run();
     }
+
+    @Test
+    public void simpleIO() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/SimpleIO.class"});
+        virtualMachine.run();
+    }
 }
