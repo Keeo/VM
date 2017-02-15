@@ -72,6 +72,8 @@ public class InstructionBuilder {
                     return new New(dis.readByte(), dis.readByte());
                 case 0xbc:
                     return new NewArray(dis.readByte());
+                case 0xbe:
+                    return new ArrayLength();
                 case 0x59:
                     return new Dup();
                 case 0xb6:

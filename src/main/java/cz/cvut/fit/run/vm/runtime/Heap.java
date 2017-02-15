@@ -5,6 +5,7 @@ import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.classfile.facade.FField;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
+import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -53,8 +54,8 @@ public class Heap {
         return valueObjectReference;
     }
 
-    public ValueObjectReference createArray(int type, int size) {
-        ValueObjectReference valueObjectReference = new ValueObjectReference(null, position);
+    public ValueArrayReference createArray(int type, int size) {
+        ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
         for(int i = position; i < size + position; ++i) {
             switch (type) {
                 case 10:
@@ -67,6 +68,6 @@ public class Heap {
         }
         position += size;
 
-        return valueObjectReference;
+        return valueArrayReference;
     }
 }

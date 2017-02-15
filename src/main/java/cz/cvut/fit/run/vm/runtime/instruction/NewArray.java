@@ -1,7 +1,9 @@
 package cz.cvut.fit.run.vm.runtime.instruction;
 
+import com.sun.xml.internal.fastinfoset.util.ValueArray;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
+import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
@@ -24,8 +26,8 @@ public class NewArray extends Instruction {
         ValueInteger count = (ValueInteger) frame.operandStack.pop();
         Heap heap = Heap.getInstance();
 
-        ValueObjectReference valueObjectReference = heap.createArray(type, count.integer);
-        frame.operandStack.push(valueObjectReference);
+        ValueArrayReference valueArrayReference = heap.createArray(type, count.integer);
+        frame.operandStack.push(valueArrayReference);
         frame.pc += 2;
     }
 }

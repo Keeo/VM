@@ -2,6 +2,7 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
+import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
@@ -17,9 +18,9 @@ public class IALoad extends Instruction {
         System.out.println("[I] IALoad");
 
         ValueInteger index = (ValueInteger) frame.operandStack.pop();
-        ValueObjectReference arrayReference = (ValueObjectReference) frame.operandStack.pop();
+        ValueArrayReference valueArrayReference = (ValueArrayReference) frame.operandStack.pop();
 
-        ValueInteger value = (ValueInteger) Heap.getInstance().heap[arrayReference.heap + index.integer];
+        ValueInteger value = (ValueInteger) Heap.getInstance().heap[valueArrayReference.heap + index.integer];
         frame.operandStack.push(value);
 
         frame.pc += 1;

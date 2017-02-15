@@ -75,8 +75,20 @@ public class VirtualMachineTest {
     }
 
     @Test
-    public void loopsNumber() throws Exception {
+    public void loops() throws Exception {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Loops.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void array() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Array.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void arrayComplex() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/ArrayComplex.class"});
         virtualMachine.run();
     }
 }
