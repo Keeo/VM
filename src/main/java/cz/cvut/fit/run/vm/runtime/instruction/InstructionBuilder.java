@@ -16,6 +16,8 @@ public class InstructionBuilder {
             switch (unsignedToBytes(dis.readByte())) {
                 case 0x0:
                     return new Nop();
+                case 0xa2:
+                    return new IfICmpGE(dis.readByte(), dis.readByte());
                 case 0x60:
                     return new IAdd();
                 case 0x64:
@@ -44,6 +46,8 @@ public class InstructionBuilder {
                     return new ILoadN(3);
                 case 0x36:
                     return new IStore(dis.readByte());
+                case 0x3b:
+                    return new IStoreN(0);
                 case 0x3c:
                     return new IStoreN(1);
                 case 0x3d:
@@ -84,6 +88,10 @@ public class InstructionBuilder {
                     return new BiPush(dis.readByte());
                 case 0xb4:
                     return new GetField(dis.readByte(), dis.readByte());
+                case 0xa7:
+                    return new GoTo(dis.readByte(), dis.readByte());
+                case 0x84:
+                    return new IInc(dis.readByte(), dis.readByte());
                 //case 0x12:
                 //    return new LdcInstruction(dis.readByte());
                 default:
