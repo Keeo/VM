@@ -18,6 +18,8 @@ public class SatSolver {
 
         char[] sat = {'a', 'b', 'c', '!', 'd', '&', '|', '&'};
         Expression expression = buildTree(sat);
+        expression.print();
+        printChar('\n');
 
         boolean[] solution = solve(expression, variableCount(sat));
         if (solution != null) {
@@ -81,19 +83,22 @@ public class SatSolver {
                 expression.operator = character == '&' ? AND : OR;
                 expression.right = stack.pop();
                 expression.left = stack.pop();
-                return expression;
+                stack.push(expression);
+                continue;
             }
 
             if (character == '!') {
                 Expression expression = new Expression();
                 expression.operator = NOT;
                 expression.left = stack.pop();
-                return expression;
+                stack.push(expression);
+                continue;
             }
 
             Expression expression = new Expression();
             expression.name = character;
-            return expression;
+            stack.push(expression);
+            continue;
 
 //            Expression expression = new Expression();
 //            switch (character) {

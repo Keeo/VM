@@ -22,6 +22,26 @@ public class Expression {
         return false;
     }
 
+    public void print() {
+        if (name > 0) {
+            SatSolver.printChar(name);
+            return;
+        }
+        if (operator == SatSolver.NOT) {
+            SatSolver.printChar('!');
+            left.print();
+            return;
+        }
+
+        SatSolver.printChar('(');
+        left.print();
+        SatSolver.printChar(' ');
+        SatSolver.printChar(operator == SatSolver.AND ? '&' : '|');
+        SatSolver.printChar(' ');
+        right.print();
+        SatSolver.printChar(')');
+    }
+
     @Override
     public String toString() {
         if (name > 0) {
