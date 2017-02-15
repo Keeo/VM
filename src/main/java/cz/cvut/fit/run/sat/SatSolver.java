@@ -22,16 +22,16 @@ public class SatSolver {
         boolean[] solution = solve(expression, variableCount(sat));
         if (solution != null) {
             for (int i = 0; i < solution.length; i++) {
-                print((char) (97 + i));
+                printChar((char) (97 + i));
             }
-            print('\n');
+            printChar('\n');
             for (int i = 0; i < solution.length; i++) {
-                print(solution[i] ? '1' : '0');
+                printChar(solution[i] ? '1' : '0');
             }
         }
     }
 
-    public static native void print(char string);
+    public static native void printChar(char string);
 
     public static boolean[] solve(Expression expression, int variableCount) {
         for (int instance = 0; instance < variableCount * variableCount; instance++) {

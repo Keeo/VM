@@ -24,7 +24,7 @@ public class IShL extends Instruction {
         ValueInteger value2 = (ValueInteger) frame.operandStack.pop();
         ValueInteger value1 = (ValueInteger) frame.operandStack.pop();
         int value = value1.integer << (value2.integer & 31);
-        System.out.println("[D] Shifting left by " + (value2.integer & 31));
+        //System.out.println("[D] Shifting Shifting Shifting left by " + (value2.integer & 31) + " orig:" + value2.integer);
         frame.operandStack.push(new ValueInteger(value));
 
         frame.pc += 1;

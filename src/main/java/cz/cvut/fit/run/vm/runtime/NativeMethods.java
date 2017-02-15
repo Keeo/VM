@@ -12,6 +12,8 @@ import java.util.Stack;
  * Created by Keo on 14.2.2017.
  */
 public class NativeMethods {
+    public static StringBuilder stringBuilder = new StringBuilder();
+
     public static void invokeStatic(String className, String methodName, Frame frame, Stack<Frame> stack) {
         String fullName = className + "::" + methodName;
 
@@ -49,15 +51,17 @@ public class NativeMethods {
     static void printChar(Frame frame, Stack<Frame> stack) {
         Value v = frame.operandStack.pop();
         if (!v.isReference()) {
+            stringBuilder.append((char)((ValueInteger)v).integer);
             System.out.println("[N] PrintChar: \"" + (char)((ValueInteger)v).integer + "\"");
         } else {
             System.out.println("Asked to print reference but that is not implemented.");
         }
     }
 
-    static void print(Frame frame, Stack<Frame>  stack) {
+    static void print(Frame frame, Stack<Frame> stack) {
         Value v = frame.operandStack.pop();
         if (!v.isReference()) {
+            stringBuilder.append(v.toString());
             System.out.println("[N] Print: \"" + v.toString() + "\"");
         } else {
             System.out.println("Asked to print reference but that is not implemented.");

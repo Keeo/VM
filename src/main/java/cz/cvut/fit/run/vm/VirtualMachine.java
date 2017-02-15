@@ -4,10 +4,12 @@ import cz.cvut.fit.run.vm.classfile.ClassFileLoader;
 import cz.cvut.fit.run.vm.classfile.ClassProvider;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
+import cz.cvut.fit.run.vm.runtime.NativeMethods;
 import cz.cvut.fit.run.vm.runtime.RuntimeEnvironment;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
 import cz.cvut.fit.run.vm.runtime.java.lang.Object;
 
+import javax.print.attribute.standard.MediaSize;
 import java.io.IOException;
 
 /**
@@ -24,9 +26,9 @@ public class VirtualMachine {
                 "src/test/fixtures/sat/Stack.class"
         };
         String[] classFiles2 = {
-                "src/test/fixtures/demo/Switches.class",
+                "src/test/fixtures/demo/Shifts.class",
         };
-        VirtualMachine virtualMachine = new VirtualMachine(classFiles);
+        VirtualMachine virtualMachine = new VirtualMachine(classFiles2);
         virtualMachine.run();
     }
 
@@ -43,6 +45,7 @@ public class VirtualMachine {
     void reset() {
         classProvider = new ClassProvider(new ClassFileLoader());
         Heap.getInstance().reset();
+        NativeMethods.stringBuilder.setLength(0);
     }
 
     void run() {
@@ -51,5 +54,6 @@ public class VirtualMachine {
                 Heap.getInstance());
 
         runtimeEnvironment.execute();
+        System.out.println(NativeMethods.stringBuilder.toString());
     }
 }

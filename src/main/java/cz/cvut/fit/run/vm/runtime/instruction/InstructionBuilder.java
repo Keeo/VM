@@ -19,6 +19,8 @@ public class InstructionBuilder {
                     return new Nop();
                 case 0x1:
                     return new AConstNull();
+                case 0x11:
+                    return new SIPush(dis.readShort());
                 case 0x9f:
                     return new IfICmpEQ(dis.readByte(), dis.readByte());
                 case 0xa0:
@@ -33,8 +35,14 @@ public class InstructionBuilder {
                     return new IfICmpLE(dis.readByte(), dis.readByte());
                 case 0x99:
                     return new IfEQ(dis.readByte(), dis.readByte());
+                case 0x9a:
+                    return new IfNE(dis.readByte(), dis.readByte());
                 case 0x9b:
                     return new IfLT(dis.readByte(), dis.readByte());
+                case 0x9c:
+                    return new IfGE(dis.readByte(), dis.readByte());
+                case 0x9d:
+                    return new IfGT(dis.readByte(), dis.readByte());
                 case 0x9e:
                     return new IfLE(dis.readByte(), dis.readByte());
                 case 0xc6:
