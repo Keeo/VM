@@ -1,6 +1,7 @@
 package cz.cvut.fit.run.vm.runtime;
 
 import com.sun.beans.decoder.ValueObject;
+import cz.cvut.fit.run.vm.VirtualMachine;
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.classfile.facade.FField;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
@@ -40,13 +41,21 @@ public class Heap {
         FField[] fFields = fClass.getFields();
         for (int i = 0; i < fFields.length; ++i) {
             FField fField = fFields[i];
-            switch (fField.getDescription()) {
-                case "I":
+            String description = fField.getDescription();
+            switch (description.charAt(0)) {
+                case 'L':
+                    String className = description.substring(1, description.length() - 1);
+                    FClass newClass = VirtualMachine.classProvider.getClass(className);
+                    heap[position] = new ValueObjectReference(newClass, position);
+                    position++;
+                    break;
+                case 'C':
+                case 'I':
                     heap[position] = new ValueInteger(0);
                     position++;
                     break;
                 default:
-                    System.out.println(fField.getDescription());
+                    System.out.println(description);
                     throw new NotImplementedException();
             }
         }

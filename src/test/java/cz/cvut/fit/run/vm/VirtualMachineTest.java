@@ -103,4 +103,16 @@ public class VirtualMachineTest {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/ArrayClasses.class"});
         virtualMachine.run();
     }
+
+    @Test
+    public void nullPointer() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/NullPointer.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void switches() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Switches.class"});
+        virtualMachine.run();
+    }
 }

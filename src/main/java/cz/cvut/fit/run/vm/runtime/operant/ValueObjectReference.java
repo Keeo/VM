@@ -5,8 +5,8 @@ import cz.cvut.fit.run.vm.classfile.facade.FClass;
 /**
  * Created by Keo on 22.12.2015.
  */
-public class ValueObjectReference extends Value {
-    public int heap;
+public class ValueObjectReference extends Value implements ReferenceInterface {
+    public int heap = -1;
     public FClass reference;
 
     public ValueObjectReference(FClass reference) {
@@ -20,6 +20,10 @@ public class ValueObjectReference extends Value {
     public ValueObjectReference(FClass reference, int heap) {
         this.reference = reference;
         this.heap = heap;
+    }
+
+    public boolean isNull() {
+        return heap == -1;
     }
 
     public boolean isReference() {

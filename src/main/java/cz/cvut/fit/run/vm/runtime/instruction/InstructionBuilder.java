@@ -16,10 +16,18 @@ public class InstructionBuilder {
             switch (unsignedToBytes(dis.readByte())) {
                 case 0x0:
                     return new Nop();
+                case 0x1:
+                    return new AConstNull();
+                case 0xa0:
+                    return new IfICmpNE(dis.readByte(), dis.readByte());
                 case 0xa2:
                     return new IfICmpGE(dis.readByte(), dis.readByte());
                 case 0x9b:
                     return new IfLT(dis.readByte(), dis.readByte());
+                case 0xc6:
+                    return new IfNull(dis.readShort());
+                case 0xc7:
+                    return new IfNonNull(dis.readShort());
                 case 0x60:
                     return new IAdd();
                 case 0x64:
@@ -86,6 +94,8 @@ public class InstructionBuilder {
                     return new InvokeVirtual(dis.readByte(), dis.readByte());
                 case 0xb7:
                     return new InvokeSpecial(dis.readByte(), dis.readByte());
+                case 0x19:
+                    return new ALoad(dis.readByte());
                 case 0x2a:
                     return new ALoadN(0);
                 case 0x2b:
@@ -98,6 +108,8 @@ public class InstructionBuilder {
                     return new AALoad();
                 case 0x34:
                     return new CALoad();
+                case 0x3a:
+                    return new AStore(dis.readByte());
                 case 0x4b:
                     return new AStoreN(0);
                 case 0x4c:
@@ -116,6 +128,8 @@ public class InstructionBuilder {
                     return new GetField(dis.readByte(), dis.readByte());
                 case 0xa7:
                     return new GoTo(dis.readByte(), dis.readByte());
+                case 0xab:
+                    return new LookupSwitch(dis, pc);
                 case 0x84:
                     return new IInc(dis.readByte(), dis.readByte());
                 //case 0x12:
