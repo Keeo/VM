@@ -32,6 +32,8 @@ public class InstructionBuilder {
                     return new GetStatic(dis.readByte(), dis.readByte());
                 case 0xb5:
                     return new PutField(dis.readByte(), dis.readByte());
+                case 0xb3:
+                    return new PutStatic(dis.readByte(), dis.readByte());
                 case 0xb8:
                     return new InvokeStatic(dis.readByte(), dis.readByte());
                 case 0x15:
@@ -68,6 +70,8 @@ public class InstructionBuilder {
                     return new IConst(5);
                 case 0xbb:
                     return new New(dis.readByte(), dis.readByte());
+                case 0xbc:
+                    return new NewArray(dis.readByte());
                 case 0x59:
                     return new Dup();
                 case 0xb6:
@@ -80,10 +84,14 @@ public class InstructionBuilder {
                     return new ALoadN(1);
                 case 0x2c:
                     return new ALoadN(2);
+                case 0x2e:
+                    return new IALoad();
                 case 0x4c:
                     return new AStoreN(1);
                 case 0x4d:
                     return new AStoreN(2);
+                case 0x4f:
+                    return new IAStore();
                 case 0x10:
                     return new BiPush(dis.readByte());
                 case 0xb4:

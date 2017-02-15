@@ -52,4 +52,21 @@ public class Heap {
 
         return valueObjectReference;
     }
+
+    public ValueObjectReference createArray(int type, int size) {
+        ValueObjectReference valueObjectReference = new ValueObjectReference(null, position);
+        for(int i = position; i < size + position; ++i) {
+            switch (type) {
+                case 10:
+                    heap[i] = new ValueInteger(0);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+        }
+        position += size;
+
+        return valueObjectReference;
+    }
 }
