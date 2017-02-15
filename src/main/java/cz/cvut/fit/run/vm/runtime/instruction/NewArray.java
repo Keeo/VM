@@ -19,6 +19,8 @@ public class NewArray extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] NewArray");
+
         ValueInteger count = (ValueInteger) frame.operandStack.pop();
         Heap heap = Heap.getInstance();
 

@@ -14,6 +14,8 @@ public class IALoad extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] IALoad");
+
         ValueInteger index = (ValueInteger) frame.operandStack.pop();
         ValueObjectReference arrayReference = (ValueObjectReference) frame.operandStack.pop();
 
