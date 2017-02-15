@@ -21,10 +21,6 @@ public abstract class IfCmp extends Instruction {
         Value b = frame.operandStack.pop();
         Value a = frame.operandStack.pop();
         if (this.compare(a, b)) {
-            System.out.println(frame.pc);
-            System.out.println(frame.fMethod.getCode().length);
-            System.out.println(offset);
-
             frame.pc += offset;
         } else {
             frame.pc +=3;

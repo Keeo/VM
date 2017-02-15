@@ -10,24 +10,17 @@ import org.junit.Test;
  */
 public class VirtualMachineTest {
 
-    String satSolver;
-    String expression;
-    String expressionLink;
-    String stack;
-
-    @org.junit.Before
-    public void setUp() throws Exception {
-        satSolver = "src/test/fixtures/sat/SatSolver.class";
-        expression = "src/test/fixtures/sat/Expression.class";
-        expressionLink= "src/test/fixtures/sat/ExpressionLink.class";
-        stack = "src/test/fixtures/sat/Stack.class";
-    }
-
     @Test
-    public void testMain() throws Exception {
-        VirtualMachine virtualMachine = new VirtualMachine(new String[]{satSolver, expression, expressionLink, stack});
+    public void completeSat() throws Exception {
+        String[] classes = new String[] {
+                "src/test/fixtures/sat/SatSolver.class",
+                "src/test/fixtures/sat/Expression.class",
+                "src/test/fixtures/sat/ExpressionLink.class",
+                "src/test/fixtures/sat/Stack.class"
+        };
+        VirtualMachine virtualMachine = new VirtualMachine(classes);
         virtualMachine.run();
-        assertEquals("abcd\n1100", NativeMethods.stringBuilder.toString());
+        assertEquals("(a & (b | (!c & d)))\nabcd\n1100", NativeMethods.stringBuilder.toString());
     }
 
     @Test

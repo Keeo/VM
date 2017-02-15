@@ -14,8 +14,8 @@ public class InstructionBuilder {
         try {
             DataInputStream dis = new DataInputStream(new ByteArrayInputStream(code, pc, code.length - pc));
             switch (unsignedToBytes(dis.readByte())) {
-                case 0x0:
                 case 0x92: // converts int to char
+                case 0x0:
                     return new Nop();
                 case 0x1:
                     return new AConstNull();
