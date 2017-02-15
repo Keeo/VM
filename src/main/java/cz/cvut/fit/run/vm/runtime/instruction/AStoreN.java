@@ -19,10 +19,10 @@ public class AStoreN extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] AStoreN");
+        this.echo("n: " + n);
 
         Value value = frame.operandStack.pop();
-        assert(value.isReference());
+        //assert(value.isReference());
         frame.locals[n] = value;
         frame.pc += 1;
     }

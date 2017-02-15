@@ -2,7 +2,6 @@ package cz.cvut.fit.run.vm;
 
 import cz.cvut.fit.run.vm.classfile.ClassFileLoader;
 import cz.cvut.fit.run.vm.classfile.ClassProvider;
-import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
 import cz.cvut.fit.run.vm.runtime.RuntimeEnvironment;
@@ -18,15 +17,14 @@ public class VirtualMachine {
     public static ClassProvider classProvider = new ClassProvider(new ClassFileLoader());
 
     public static void main(String[] args) throws IOException {
-//        String[] classFiles = {
-//                "src/test/fixtures/sat/SatSolver.class",
-//                "src/test/fixtures/sat/Expression.class",
-//                "src/test/fixtures/sat/ExpressionLink.class",
-//                "src/test/fixtures/sat/Stack.class"
-//        };
         String[] classFiles = {
-                "src/test/fixtures/demo/ArrayClasses.class",
-                //"src/test/fixtures/demo/ComplexNumber.class",
+                "src/test/fixtures/sat/SatSolver.class",
+                "src/test/fixtures/sat/Expression.class",
+                "src/test/fixtures/sat/ExpressionLink.class",
+                "src/test/fixtures/sat/Stack.class"
+        };
+        String[] classFiles2 = {
+                "src/test/fixtures/demo/Switches.class",
         };
         VirtualMachine virtualMachine = new VirtualMachine(classFiles);
         virtualMachine.run();

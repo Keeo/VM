@@ -16,6 +16,7 @@ public class GoTo extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        this.echo("offset: " + offset);
         frame.pc += offset;
     }
 }
