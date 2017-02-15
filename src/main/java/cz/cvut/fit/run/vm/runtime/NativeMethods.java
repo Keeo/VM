@@ -19,6 +19,9 @@ public class NativeMethods {
             case "print":
                 print(frame, stack);
                 break;
+            case "printChar":
+                printChar(frame, stack);
+                break;
             case "read":
                 read(frame, stack);
                 break;
@@ -41,6 +44,15 @@ public class NativeMethods {
         //} catch (IOException e) {
         //    System.out.println(e.toString());
         //}
+    }
+
+    static void printChar(Frame frame, Stack<Frame> stack) {
+        Value v = frame.operandStack.pop();
+        if (!v.isReference()) {
+            System.out.println("[N] PrintChar: \"" + (char)((ValueInteger)v).integer + "\"");
+        } else {
+            System.out.println("Asked to print reference but that is not implemented.");
+        }
     }
 
     static void print(Frame frame, Stack<Frame>  stack) {

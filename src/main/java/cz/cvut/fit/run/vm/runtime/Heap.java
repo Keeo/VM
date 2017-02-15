@@ -58,10 +58,12 @@ public class Heap {
         ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
         for(int i = position; i < size + position; ++i) {
             switch (type) {
+                case 5:
                 case 10:
                     heap[i] = new ValueInteger(0);
                     break;
                 default:
+                    System.out.println("Creating array for type: " + type);
                     throw new NotImplementedException();
             }
 
@@ -69,5 +71,20 @@ public class Heap {
         position += size;
 
         return valueArrayReference;
+    }
+
+    public ValueArrayReference createObjectArray(FClass fClass, int size) {
+        ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
+
+        for(int i = position; i < size + position; ++i) {
+            heap[i] = new ValueObjectReference(fClass, i);
+        }
+        position += size;
+
+        return valueArrayReference;
+    }
+
+    public void reset() {
+        instance = new Heap();
     }
 }

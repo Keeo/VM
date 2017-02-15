@@ -22,7 +22,7 @@ public class AStoreN extends Instruction {
         System.out.println("[I] AStoreN");
 
         Value value = frame.operandStack.pop();
-        assert(value instanceof ValueArrayReference);
+        assert(value.isReference());
         frame.locals[n] = value;
         frame.pc += 1;
     }

@@ -25,7 +25,7 @@ public class VirtualMachine {
 //                "src/test/fixtures/sat/Stack.class"
 //        };
         String[] classFiles = {
-                "src/test/fixtures/demo/ArrayComplex.class",
+                "src/test/fixtures/demo/ArrayClasses.class",
                 //"src/test/fixtures/demo/ComplexNumber.class",
         };
         VirtualMachine virtualMachine = new VirtualMachine(classFiles);
@@ -33,12 +33,18 @@ public class VirtualMachine {
     }
 
     public VirtualMachine(String[] classFiles) throws IOException {
+        reset();
         for (String classFile : classFiles) {
             classProvider.addClassFileFromPath(classFile);
         }
 
         classProvider.addGlobalClass(new Object());
         classProvider.addGlobalClass(new NString());
+    }
+
+    void reset() {
+        classProvider = new ClassProvider(new ClassFileLoader());
+        Heap.getInstance().reset();
     }
 
     void run() {

@@ -1,8 +1,8 @@
 package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
+import cz.cvut.fit.run.vm.runtime.operant.Value;
 import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
-import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
 import java.util.Stack;
 
@@ -20,8 +20,9 @@ public class ALoadN extends Instruction {
     public void execute(Frame frame, Stack<Frame> stack) {
         System.out.println("[I] ALoadN n:" + n);
 
-        ValueArrayReference valueArrayReference = (ValueArrayReference)frame.locals[n];
-        frame.operandStack.push(valueArrayReference);
+        Value valueReference = frame.locals[n];
+        assert(valueReference.isReference());
+        frame.operandStack.push(valueReference);
         frame.pc += 1;
     }
 }

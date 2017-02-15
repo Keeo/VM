@@ -28,6 +28,8 @@ public class InstructionBuilder {
                     return new IMul();
                 case 0xac:
                     return new IReturn();
+                case 0xb0:
+                    return new AReturn();
                 case 0xb1:
                     return new Return();
                 case 0xb2:
@@ -74,6 +76,8 @@ public class InstructionBuilder {
                     return new New(dis.readByte(), dis.readByte());
                 case 0xbc:
                     return new NewArray(dis.readByte());
+                case 0xbd:
+                    return new ANewArray(dis.readShort());
                 case 0xbe:
                     return new ArrayLength();
                 case 0x59:
@@ -90,12 +94,22 @@ public class InstructionBuilder {
                     return new ALoadN(2);
                 case 0x2e:
                     return new IALoad();
+                case 0x32:
+                    return new AALoad();
+                case 0x34:
+                    return new CALoad();
+                case 0x4b:
+                    return new AStoreN(0);
                 case 0x4c:
                     return new AStoreN(1);
                 case 0x4d:
                     return new AStoreN(2);
                 case 0x4f:
                     return new IAStore();
+                case 0x53:
+                    return new AAStore();
+                case 0x55:
+                    return new CAStore();
                 case 0x10:
                     return new BiPush(dis.readByte());
                 case 0xb4:

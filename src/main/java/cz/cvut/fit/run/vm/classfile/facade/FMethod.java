@@ -69,10 +69,11 @@ public class FMethod {
         String description = this.getDescription();
         String parameters = description.substring(1, description.indexOf(')'));
         String classFix = parameters.replaceAll("L[a-zA-Z/]+;", "L");
-        int length = classFix.length();
+        String arrayFix = classFix.replaceAll("\\[", "");
+        int length = arrayFix.length();
 
         if (length > 4) {
-            System.out.println("Param count is: " + length + " for: " + description);
+            System.out.println("Param count is: " + length + " for: " + description + " resulted in: " + arrayFix);
             throw new NotImplementedException();
         }
 

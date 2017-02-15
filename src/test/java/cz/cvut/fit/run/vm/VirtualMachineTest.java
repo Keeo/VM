@@ -91,4 +91,16 @@ public class VirtualMachineTest {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/ArrayComplex.class"});
         virtualMachine.run();
     }
+
+    @Test
+    public void chars() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Chars.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void arrayClasses() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/ArrayClasses.class"});
+        virtualMachine.run();
+    }
 }
