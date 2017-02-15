@@ -11,15 +11,16 @@ public class ValueObjectReference extends Value implements ReferenceInterface {
 
     public ValueObjectReference(FClass reference) {
         this.reference = reference;
-    }
-
-    public Value copy() {
-        return new ValueObjectReference(this.reference, this.heap);
+        System.out.println("[D] Creating object reference without heap place.");
     }
 
     public ValueObjectReference(FClass reference, int heap) {
         this.reference = reference;
         this.heap = heap;
+    }
+
+    public Value copy() {
+        return new ValueObjectReference(this.reference, this.heap);
     }
 
     public boolean isNull() {

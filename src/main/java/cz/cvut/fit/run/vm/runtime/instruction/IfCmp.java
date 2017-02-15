@@ -2,7 +2,6 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
-import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import java.util.Stack;
 
 /**
@@ -11,8 +10,8 @@ import java.util.Stack;
 public abstract class IfCmp extends Instruction {
     int offset;
 
-    public IfCmp(byte indexbyte1, byte indexbyte2) {
-        this.offset = (indexbyte1 << 8) | indexbyte2;
+    public IfCmp(short offset) {
+        this.offset = offset;
     }
 
     @Override
@@ -22,6 +21,10 @@ public abstract class IfCmp extends Instruction {
         Value b = frame.operandStack.pop();
         Value a = frame.operandStack.pop();
         if (this.compare(a, b)) {
+            System.out.println(frame.pc);
+            System.out.println(frame.fMethod.getCode().length);
+            System.out.println(offset);
+
             frame.pc += offset;
         } else {
             frame.pc +=3;

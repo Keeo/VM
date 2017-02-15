@@ -7,11 +7,12 @@ public class Stack {
     ExpressionLink link;
 
     void push(Expression expression) {
+        ExpressionLink expressionLink = new ExpressionLink(expression);
         if (link == null) {
-            link = new ExpressionLink(expression, null);
+            link = expressionLink;
         } else {
-            link.next = new ExpressionLink(expression, link);
-            link = link.next;
+            expressionLink.prev = link;
+            link = expressionLink;
         }
     }
 

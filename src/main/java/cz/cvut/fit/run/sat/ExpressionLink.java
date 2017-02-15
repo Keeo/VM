@@ -5,11 +5,9 @@ package cz.cvut.fit.run.sat;
  */
 public class ExpressionLink {
     public ExpressionLink prev;
-    public ExpressionLink next;
     public Expression expression;
 
-    public ExpressionLink(Expression expression, ExpressionLink prev) {
+    public ExpressionLink(Expression expression) {
         this.expression = expression;
-        this.prev = prev;
     }
 }

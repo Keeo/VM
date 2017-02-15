@@ -11,8 +11,8 @@ import java.util.Stack;
  */
 public class IfICmpGE extends IfCmp {
 
-    public IfICmpGE(byte indexbyte1, byte indexbyte2) {
-        super(indexbyte1, indexbyte2);
+    public IfICmpGE(short offset) {
+        super(offset);
     }
 
     @Override

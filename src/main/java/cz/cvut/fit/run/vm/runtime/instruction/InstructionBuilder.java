@@ -22,17 +22,17 @@ public class InstructionBuilder {
                 case 0x11:
                     return new SIPush(dis.readShort());
                 case 0x9f:
-                    return new IfICmpEQ(dis.readByte(), dis.readByte());
+                    return new IfICmpEQ(dis.readShort());
                 case 0xa0:
-                    return new IfICmpNE(dis.readByte(), dis.readByte());
+                    return new IfICmpNE(dis.readShort());
                 case 0xa1:
-                    return new IfICmpLT(dis.readByte(), dis.readByte());
+                    return new IfICmpLT(dis.readShort());
                 case 0xa2:
-                    return new IfICmpGE(dis.readByte(), dis.readByte());
+                    return new IfICmpGE(dis.readShort());
                 case 0xa3:
-                    return new IfICmpGT(dis.readByte(), dis.readByte());
+                    return new IfICmpGT(dis.readShort());
                 case 0xa4:
-                    return new IfICmpLE(dis.readByte(), dis.readByte());
+                    return new IfICmpLE(dis.readShort());
                 case 0x99:
                     return new IfEQ(dis.readByte(), dis.readByte());
                 case 0x9a:
@@ -155,6 +155,8 @@ public class InstructionBuilder {
                     return new AAStore();
                 case 0x55:
                     return new CAStore();
+                case 0x57:
+                    return new Pop();
                 case 0x10:
                     return new BiPush(dis.readByte());
                 case 0xb4:

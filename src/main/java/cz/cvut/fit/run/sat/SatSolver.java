@@ -12,10 +12,6 @@ public class SatSolver {
      * @throws Exception
      */
     public static void main(String[] args) {
-        //char[] sat = {'a', 'b', '!'};
-        //Expression expression = buildTree(sat);
-
-
         char[] sat = {'a', 'b', 'c', '!', 'd', '&', '|', '&'};
         Expression expression = buildTree(sat);
         expression.print();
@@ -34,6 +30,9 @@ public class SatSolver {
     }
 
     public static native void printChar(char string);
+    //public static void printChar(char val) {
+    //    System.out.print(val);
+    //}
 
     public static boolean[] solve(Expression expression, int variableCount) {
         for (int instance = 0; instance < variableCount * variableCount; instance++) {
@@ -74,53 +73,26 @@ public class SatSolver {
 
         for (int i = 0; i < sat.length; i++) {
             char character = sat[i];
-            if (character == ' ') {
-                continue;
-            }
-
-            if (character == '&' || character == '|') {
-                Expression expression = new Expression();
-                expression.operator = character == '&' ? AND : OR;
-                expression.right = stack.pop();
-                expression.left = stack.pop();
-                stack.push(expression);
-                continue;
-            }
-
-            if (character == '!') {
-                Expression expression = new Expression();
-                expression.operator = NOT;
-                expression.left = stack.pop();
-                stack.push(expression);
-                continue;
-            }
-
             Expression expression = new Expression();
-            expression.name = character;
+            switch (character) {
+                case '&': // 38
+                case '|': // 124
+                    expression.operator = character == '&' ? AND : OR;
+                    expression.right = stack.pop();
+                    expression.left = stack.pop();
+                    break;
+
+                case '!': // 33
+                    expression.operator = NOT;
+                    expression.left = stack.pop();
+                    break;
+
+                default:
+                    expression.name = character;
+                    break;
+            }
             stack.push(expression);
-            continue;
-
-//            Expression expression = new Expression();
-//            switch (character) {
-//                case '&': // 38
-//                case '|': // 124
-//                    expression.operator = character == '&' ? AND : OR;
-//                    expression.right = stack.pop();
-//                    expression.left = stack.pop();
-//                    break;
-//
-//                case '!': // 33
-//                    expression.operator = NOT;
-//                    expression.left = stack.pop();
-//                    break;
-//
-//                default:
-//                    expression.name = character;
-//                    break;
-//            }
-//            stack.push(expression);
         }
-
         return stack.pop();
     }
 }

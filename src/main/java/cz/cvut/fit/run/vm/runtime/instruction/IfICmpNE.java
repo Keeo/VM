@@ -7,8 +7,8 @@ import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
  * Created by Keo on 15.2.2017.
  */
 public class IfICmpNE extends IfCmp {
-    public IfICmpNE(byte indexbyte1, byte indexbyte2) {
-        super(indexbyte1, indexbyte2);
+    public IfICmpNE(short offset) {
+        super(offset);
     }
 
     @Override

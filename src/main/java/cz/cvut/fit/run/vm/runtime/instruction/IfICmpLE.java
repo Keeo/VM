@@ -8,8 +8,8 @@ import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
  */
 public class IfICmpLE extends IfCmp {
 
-    public IfICmpLE(byte indexbyte1, byte indexbyte2) {
-        super(indexbyte1, indexbyte2);
+    public IfICmpLE(short offset) {
+        super(offset);
     }
 
     @Override

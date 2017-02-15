@@ -28,7 +28,7 @@ public class VirtualMachine {
         String[] classFiles2 = {
                 "src/test/fixtures/demo/Shifts.class",
         };
-        VirtualMachine virtualMachine = new VirtualMachine(classFiles2);
+        VirtualMachine virtualMachine = new VirtualMachine(classFiles);
         virtualMachine.run();
     }
 
