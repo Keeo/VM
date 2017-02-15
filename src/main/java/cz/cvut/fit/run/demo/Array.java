@@ -9,7 +9,9 @@ public class Array {
         integers[0] = 0;
         integers[1] = 1;
         integers[2] = 2;
-        print(integers[0] + integers[1]);
+        print(integers[0]);
+        print(integers[1]);
+        print(integers[2]);
     }
 
     public static native void print(int a);

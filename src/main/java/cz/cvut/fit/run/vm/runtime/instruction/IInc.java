@@ -19,7 +19,9 @@ public class IInc extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        ((ValueInteger) frame.locals[index]).integer += constant;
+        System.out.println("[I] IInc");
+        //((ValueInteger) frame.locals[index]).integer += constant; // don't do that please... just don't...
+        frame.locals[index] = new ValueInteger(((ValueInteger) frame.locals[index]).integer + constant);
         frame.pc += 3;
     }
 }

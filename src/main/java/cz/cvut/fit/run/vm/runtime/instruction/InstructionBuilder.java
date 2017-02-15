@@ -18,6 +18,8 @@ public class InstructionBuilder {
                     return new Nop();
                 case 0xa2:
                     return new IfICmpGE(dis.readByte(), dis.readByte());
+                case 0x9b:
+                    return new IfLT(dis.readByte(), dis.readByte());
                 case 0x60:
                     return new IAdd();
                 case 0x64:
