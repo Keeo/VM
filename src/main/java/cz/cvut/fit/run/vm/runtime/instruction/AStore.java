@@ -17,7 +17,7 @@ public class AStore extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] AStore");
+        this.echo();
 
         Value value = frame.operandStack.pop();
         assert(value.isReference());

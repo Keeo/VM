@@ -18,7 +18,7 @@ public class ALoadN extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] ALoad(N) n:" + n);
+        this.echo("n: " + n);
 
         Value valueReference = frame.locals[n];
         assert(valueReference.isReference());

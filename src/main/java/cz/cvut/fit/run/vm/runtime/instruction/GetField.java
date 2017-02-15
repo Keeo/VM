@@ -47,8 +47,6 @@ public class GetField extends Instruction {
         }
 
         Heap heap = Heap.getInstance();
-        System.out.println("PP: " + position);
-        System.out.println("Heap: " + valueObjectReference.heap);
         Value value = heap.heap[valueObjectReference.heap + position];
         //assert(value instanceof ValueInteger);
         frame.operandStack.push(value);

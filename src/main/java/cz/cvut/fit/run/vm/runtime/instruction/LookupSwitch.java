@@ -20,7 +20,7 @@ public class LookupSwitch extends Instruction {
     int defaultAddress;
 
     public LookupSwitch(DataInputStream code, int pc) throws IOException {
-        System.out.println("[I] Lookup switch");
+        this.echo();
 
         while ((pc + 1) % 4 != 0) {
             pc++;

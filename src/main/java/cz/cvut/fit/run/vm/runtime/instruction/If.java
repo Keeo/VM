@@ -18,6 +18,8 @@ public abstract class If extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        this.echo("offset: " + offset);
+
         ValueInteger value = (ValueInteger) frame.operandStack.pop();
         if (compare(value.integer)) {
             frame.pc += offset;

@@ -16,7 +16,5 @@ public class Return extends Instruction {
         frame.operandStack.clear();
         frame.pc = 0;
         stack.pop();
-
-        //frame.pc += 1;
     }
 }

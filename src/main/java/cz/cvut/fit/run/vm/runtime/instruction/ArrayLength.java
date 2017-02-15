@@ -12,6 +12,8 @@ import java.util.Stack;
 public class ArrayLength extends Instruction {
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        this.echo();
+
         ValueArrayReference valueArrayReference = (ValueArrayReference) frame.operandStack.pop();
         frame.operandStack.push(new ValueInteger(valueArrayReference.size));
 
