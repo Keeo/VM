@@ -54,8 +54,4 @@ public class ClassProvider {
         }
         throw new RuntimeException("Main function not found.");
     }
-
-    public void reset() {
-
-    }
 }

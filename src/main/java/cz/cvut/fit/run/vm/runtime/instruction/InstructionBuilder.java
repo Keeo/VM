@@ -15,15 +15,28 @@ public class InstructionBuilder {
             DataInputStream dis = new DataInputStream(new ByteArrayInputStream(code, pc, code.length - pc));
             switch (unsignedToBytes(dis.readByte())) {
                 case 0x0:
+                case 0x92: // converts int to char
                     return new Nop();
                 case 0x1:
                     return new AConstNull();
+                case 0x9f:
+                    return new IfICmpEQ(dis.readByte(), dis.readByte());
                 case 0xa0:
                     return new IfICmpNE(dis.readByte(), dis.readByte());
+                case 0xa1:
+                    return new IfICmpLT(dis.readByte(), dis.readByte());
                 case 0xa2:
                     return new IfICmpGE(dis.readByte(), dis.readByte());
+                case 0xa3:
+                    return new IfICmpGT(dis.readByte(), dis.readByte());
+                case 0xa4:
+                    return new IfICmpLE(dis.readByte(), dis.readByte());
+                case 0x99:
+                    return new IfEQ(dis.readByte(), dis.readByte());
                 case 0x9b:
                     return new IfLT(dis.readByte(), dis.readByte());
+                case 0x9e:
+                    return new IfLE(dis.readByte(), dis.readByte());
                 case 0xc6:
                     return new IfNull(dis.readShort());
                 case 0xc7:
@@ -34,6 +47,10 @@ public class InstructionBuilder {
                     return new ISub();
                 case 0x68:
                     return new IMul();
+                case 0x78:
+                    return new IShL();
+                case 0x7e:
+                    return new IAnd();
                 case 0xac:
                     return new IReturn();
                 case 0xb0:
@@ -58,6 +75,8 @@ public class InstructionBuilder {
                     return new ILoadN(2);
                 case 0x1d:
                     return new ILoadN(3);
+                case 0x33:
+                    return new BALoad();
                 case 0x36:
                     return new IStore(dis.readByte());
                 case 0x3b:
@@ -88,6 +107,8 @@ public class InstructionBuilder {
                     return new ANewArray(dis.readShort());
                 case 0xbe:
                     return new ArrayLength();
+                case 0x54:
+                    return new BAStore();
                 case 0x59:
                     return new Dup();
                 case 0xb6:
@@ -102,6 +123,8 @@ public class InstructionBuilder {
                     return new ALoadN(1);
                 case 0x2c:
                     return new ALoadN(2);
+                case 0x2d:
+                    return new ALoadN(3);
                 case 0x2e:
                     return new IALoad();
                 case 0x32:
@@ -116,6 +139,8 @@ public class InstructionBuilder {
                     return new AStoreN(1);
                 case 0x4d:
                     return new AStoreN(2);
+                case 0x4e:
+                    return new AStoreN(3);
                 case 0x4f:
                     return new IAStore();
                 case 0x53:

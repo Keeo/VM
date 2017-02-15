@@ -67,6 +67,7 @@ public class Heap {
         ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
         for(int i = position; i < size + position; ++i) {
             switch (type) {
+                case 4:
                 case 5:
                 case 10:
                     heap[i] = new ValueInteger(0);
