@@ -68,14 +68,15 @@ public class FMethod {
     public int getParameterCount() {
         String description = this.getDescription();
         String parameters = description.substring(1, description.indexOf(')'));
-        int length = parameters.length();
+        String classFix = parameters.replaceAll("L[a-zA-Z/]+;", "L");
+        int length = classFix.length();
 
         if (length > 4) {
             System.out.println("Param count is: " + length + " for: " + description);
             throw new NotImplementedException();
         }
 
-        return parameters.length();
+        return length;
     }
 
     public String getName() {

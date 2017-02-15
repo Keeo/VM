@@ -38,11 +38,14 @@ public class InvokeSpecial extends Instruction {
         //fMethod.printCode();
 
         Frame newFrame = new Frame(fMethod);
-        newFrame.locals[0] = frame.operandStack.pop();
         int parameterCount = fMethod.getParameterCount();
         for (int i = 0; i < parameterCount; ++i) {
+            assert(parameterCount - i != 0);
             newFrame.locals[parameterCount - i] = frame.operandStack.pop();
         }
+        newFrame.locals[0] = frame.operandStack.pop();
+
+
 
         fClass.initialize();
 

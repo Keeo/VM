@@ -17,6 +17,8 @@ public class IConst extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] IConst: " + constant);
+
         frame.operandStack.push(new ValueInteger(constant));
 
         frame.pc += 1;

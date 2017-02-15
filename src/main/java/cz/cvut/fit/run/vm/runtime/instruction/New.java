@@ -23,6 +23,8 @@ public class New extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] New");
+
         Constant[] constants = frame.fMethod.fClass.getConstants();
         ConstantClass classConstant = (ConstantClass) constants[index];
         String className = ((ConstantUtf8)constants[classConstant.index]).string;

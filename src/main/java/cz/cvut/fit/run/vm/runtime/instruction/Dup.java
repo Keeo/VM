@@ -11,6 +11,8 @@ import java.util.Stack;
 public class Dup extends Instruction {
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] Dup");
+
         Value v = frame.operandStack.peek();
         frame.operandStack.push(v.copy());
 

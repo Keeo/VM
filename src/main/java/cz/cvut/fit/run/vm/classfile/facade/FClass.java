@@ -74,6 +74,23 @@ public class FClass {
         throw new RuntimeException("Field " + name + " was not found in class " + this.getFullClassName());
     }
 
+    public int getFieldIndex(String fieldName) {
+        FField[] fields = getFields();
+        if (fields.length == 0) {
+            throw new RuntimeException("Cannot get index field when we dont have any fields.");
+        }
+
+        int position = 0;
+        for (FField fField : this.getFields()) {
+            if (fField.getName().equals(fieldName)) {
+                return position;
+            }
+            position++;
+        }
+
+        throw new RuntimeException("We were not able to find field we wanted.");
+    }
+
     /**\
      * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-2.html#jvms-2.9
      */

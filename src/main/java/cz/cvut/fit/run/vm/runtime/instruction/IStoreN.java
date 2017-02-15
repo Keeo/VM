@@ -17,7 +17,7 @@ public class IStoreN extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] IStoreN");
+        System.out.println("[I] IStore(N)");
 
         Value integer = frame.operandStack.pop();
         frame.locals[n] = integer;

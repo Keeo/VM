@@ -54,6 +54,8 @@ public class InstructionBuilder {
                     return new IConst(0);
                 case 0x4:
                     return new IConst(1);
+                case 0x5:
+                    return new IConst(2);
                 case 0x6:
                     return new IConst(3);
                 case 0x7:
@@ -72,8 +74,12 @@ public class InstructionBuilder {
                     return new ALoadN(0);
                 case 0x2b:
                     return new ALoadN(1);
+                case 0x2c:
+                    return new ALoadN(2);
                 case 0x4c:
                     return new AStoreN(1);
+                case 0x4d:
+                    return new AStoreN(2);
                 case 0x10:
                     return new BiPush(dis.readByte());
                 case 0xb4:

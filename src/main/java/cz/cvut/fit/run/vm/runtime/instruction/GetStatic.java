@@ -22,6 +22,8 @@ public class GetStatic extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
+        System.out.println("[I] GetStatic");
+
         Constant[] constants = frame.fMethod.fClass.getConstants();
 
         ConstantFieldref fieldref = (ConstantFieldref) constants[index];

@@ -25,7 +25,8 @@ public class VirtualMachine {
 //                "src/test/fixtures/sat/Stack.class"
 //        };
         String[] classFiles = {
-                "src/test/fixtures/demo/NewClass.class",
+                //"src/test/fixtures/demo/NewClass.class",
+                "src/test/fixtures/demo/ComplexNumber.class",
         };
         VirtualMachine virtualMachine = new VirtualMachine(classFiles);
         virtualMachine.run();

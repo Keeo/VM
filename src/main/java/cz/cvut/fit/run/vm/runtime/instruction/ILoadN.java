@@ -2,6 +2,7 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
+import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 
 import java.util.Stack;
 
@@ -17,9 +18,10 @@ public class ILoadN extends Instruction {
 
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
-        System.out.println("[I] ILoadN n:" + n);
+        System.out.println("[I] ILoad(N) n:" + n);
 
         Value value = frame.locals[n];
+        assert(value instanceof ValueInteger);
         frame.operandStack.push(value);
         frame.pc += 1;
     }
