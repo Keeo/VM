@@ -1,9 +1,6 @@
 package cz.cvut.fit.run.vm.runtime.java.lang;
 
-import cz.cvut.fit.run.vm.classfile.constant.Constant;
-import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.classfile.facade.FField;
-import cz.cvut.fit.run.vm.classfile.facade.FMethod;
 
 /**
  * Created by Keo on 13.2.2017.

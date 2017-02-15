@@ -5,6 +5,6 @@ package cz.cvut.fit.run.vm.classfile.attribute;
  */
 public class NotImplementedAttribute extends Attribute {
     public NotImplementedAttribute() {
-        super((short)0, 0);
+        super((short) 0, 0);
     }
 }

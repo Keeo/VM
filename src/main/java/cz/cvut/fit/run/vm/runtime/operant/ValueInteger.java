@@ -12,7 +12,7 @@ public class ValueInteger extends Value {
 
     public Value copy() {
         return new ValueInteger(this.integer);
-    };
+    }
 
     @Override
     public String toString() {

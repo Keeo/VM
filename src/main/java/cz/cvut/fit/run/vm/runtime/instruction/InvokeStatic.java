@@ -7,7 +7,6 @@ import cz.cvut.fit.run.vm.classfile.constant.ConstantNameAndType;
 import cz.cvut.fit.run.vm.classfile.facade.FMethod;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.NativeMethods;
-import cz.cvut.fit.run.vm.runtime.operant.Value;
 
 import java.util.Stack;
 

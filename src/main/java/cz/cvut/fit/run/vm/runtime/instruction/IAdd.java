@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * Created by Keo on 14.2.2017.
  */
-public class IAdd extends Instruction{
+public class IAdd extends Instruction {
     @Override
     public void execute(Frame frame, Stack<Frame> stack) {
         System.out.println("[I] IAdd");

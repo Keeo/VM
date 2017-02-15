@@ -14,6 +14,7 @@ public class IShL extends Instruction {
      * Both value1 and value2 must be of type int. The values are popped from the operand stack. An int result is
      * calculated by shifting value1 left by s bit positions, where s is the value of the low 5 bits of value2.
      * The result is pushed onto the operand stack.
+     *
      * @param frame
      * @param stack
      */

@@ -2,7 +2,6 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
-import sun.plugin2.applet.SecurityManagerHelper;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class LookupSwitch extends Instruction {
         while ((pc + 1) % 4 != 0) {
             pc++;
             byte padding = code.readByte();
-            assert(padding == 0);
+            assert (padding == 0);
         }
 
         defaultAddress = code.readInt();

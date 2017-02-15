@@ -7,8 +7,6 @@ import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.util.LinkedList;
 
 /**

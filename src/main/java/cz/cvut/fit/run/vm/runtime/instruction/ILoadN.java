@@ -21,7 +21,7 @@ public class ILoadN extends Instruction {
         this.echo(" n: " + n);
 
         Value value = frame.locals[n];
-        assert(value instanceof ValueInteger);
+        assert (value instanceof ValueInteger);
         frame.operandStack.push(value);
         frame.pc += 1;
     }

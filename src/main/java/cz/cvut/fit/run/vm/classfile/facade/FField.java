@@ -25,5 +25,6 @@ public class FField {
         return constantUtf8.string;
     }
 
-    public FField() {}
+    public FField() {
+    }
 }

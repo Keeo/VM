@@ -3,9 +3,6 @@ package cz.cvut.fit.run.vm.runtime;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Stack;
 
 /**
@@ -36,13 +33,13 @@ public class NativeMethods {
     static void read(Frame frame, Stack<Frame> stack) {
         System.out.println("[N] Read from input.");
         //try {
-            // System.out.print("Enter the number:");
-            System.out.println("Enter the number: 7");
-            //InputStreamReader read = new InputStreamReader(System.in);
-            //BufferedReader in = new BufferedReader(read);
-            //String number = in.readLine();
-            String number = "7";
-            frame.operandStack.push(new ValueInteger(Integer.parseInt(number)));
+        // System.out.print("Enter the number:");
+        System.out.println("Enter the number: 7");
+        //InputStreamReader read = new InputStreamReader(System.in);
+        //BufferedReader in = new BufferedReader(read);
+        //String number = in.readLine();
+        String number = "7";
+        frame.operandStack.push(new ValueInteger(Integer.parseInt(number)));
         //} catch (IOException e) {
         //    System.out.println(e.toString());
         //}
@@ -51,8 +48,8 @@ public class NativeMethods {
     static void printChar(Frame frame, Stack<Frame> stack) {
         Value v = frame.operandStack.pop();
         if (!v.isReference()) {
-            stringBuilder.append((char)((ValueInteger)v).integer);
-            System.out.println("[N] PrintChar: \"" + (char)((ValueInteger)v).integer + "\"");
+            stringBuilder.append((char) ((ValueInteger) v).integer);
+            System.out.println("[N] PrintChar: \"" + (char) ((ValueInteger) v).integer + "\"");
         } else {
             System.out.println("Asked to print reference but that is not implemented.");
         }

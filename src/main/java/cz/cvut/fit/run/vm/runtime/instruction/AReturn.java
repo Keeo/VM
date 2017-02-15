@@ -14,7 +14,7 @@ public class AReturn extends Instruction {
         System.out.println("[I] AReturn");
 
         Value ref = frame.operandStack.pop();
-        assert(ref.isReference());
+        assert (ref.isReference());
 
         frame.operandStack.clear();
         frame.pc = 0;

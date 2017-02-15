@@ -2,6 +2,7 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
+
 import java.util.Stack;
 
 /**
@@ -23,7 +24,7 @@ public abstract class IfCmp extends Instruction {
         if (this.compare(a, b)) {
             frame.pc += offset;
         } else {
-            frame.pc +=3;
+            frame.pc += 3;
         }
     }
 

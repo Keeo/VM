@@ -27,7 +27,7 @@ public class New extends Instruction {
 
         Constant[] constants = frame.fMethod.fClass.getConstants();
         ConstantClass classConstant = (ConstantClass) constants[index];
-        String className = ((ConstantUtf8)constants[classConstant.index]).string;
+        String className = ((ConstantUtf8) constants[classConstant.index]).string;
         FClass fClass = VirtualMachine.classProvider.getClass(className);
 
         ValueObjectReference valueObjectReference = Heap.getInstance().createObject(fClass);

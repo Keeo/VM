@@ -11,5 +11,6 @@ public class SimpleIO {
     }
 
     public static native int read();
+
     public static native void print(int a);
 }

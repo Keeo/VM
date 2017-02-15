@@ -26,25 +26,24 @@ public class InvokeSpecial extends Instruction {
         ConstantMethodref constantMethodref = (ConstantMethodref) constants[index];
 
         ConstantClass constantClass = (ConstantClass) constants[constantMethodref.classIndex];
-        String className = ((ConstantUtf8)constants[constantClass.index]).string;
+        String className = ((ConstantUtf8) constants[constantClass.index]).string;
         FClass fClass = VirtualMachine.classProvider.getClass(className);
-        assert(fClass != null);
+        assert (fClass != null);
 
         ConstantNameAndType constantNameAndType = (ConstantNameAndType) constants[constantMethodref.nameAndTypeIndex];
-        String methodName = ((ConstantUtf8)constants[constantNameAndType.nameIndex]).string;
+        String methodName = ((ConstantUtf8) constants[constantNameAndType.nameIndex]).string;
         FMethod fMethod = fClass.getMethod(methodName);
-        assert(fMethod != null);
+        assert (fMethod != null);
 
         //fMethod.printCode();
 
         Frame newFrame = new Frame(fMethod);
         int parameterCount = fMethod.getParameterCount();
         for (int i = 0; i < parameterCount; ++i) {
-            assert(parameterCount - i != 0);
+            assert (parameterCount - i != 0);
             newFrame.locals[parameterCount - i] = frame.operandStack.pop();
         }
         newFrame.locals[0] = frame.operandStack.pop();
-
 
 
         fClass.initialize();

@@ -20,7 +20,7 @@ public class AStore extends Instruction {
         this.echo();
 
         Value value = frame.operandStack.pop();
-        assert(value.isReference());
+        assert (value.isReference());
         frame.locals[index] = value;
 
         frame.pc += 2;
