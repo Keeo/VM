@@ -37,11 +37,11 @@ public class InvokeVirtual extends Instruction {
 
 
         Frame newFrame = new Frame(fMethod);
-        newFrame.locals[0] = frame.operandStack.pop();
         int parameterCount = fMethod.getParameterCount();
         for (int i = 0; i < parameterCount; ++i) {
             newFrame.locals[parameterCount - i] = frame.operandStack.pop();
         }
+        newFrame.locals[0] = frame.operandStack.pop();
 
         stack.push(newFrame);
 

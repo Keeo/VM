@@ -20,11 +20,11 @@ public class VirtualMachineTest {
         stack = "src/test/fixtures/sat/Stack.class";
     }
 
-    @Test
-    public void testMain() throws Exception {
-        //VirtualMachine virtualMachine = new VirtualMachine(new String[]{satSolver, expression, expressionLink, stack});
-        //virtualMachine.run();
-    }
+    //@Test
+    //public void testMain() throws Exception {
+    //    VirtualMachine virtualMachine = new VirtualMachine(new String[]{satSolver, expression, expressionLink, stack});
+    //    virtualMachine.run();
+    //}
 
     @Test
     public void simple() throws Exception {
@@ -59,6 +59,24 @@ public class VirtualMachineTest {
     @Test
     public void newClass() throws Exception {
         VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/NewClass.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void setClassProperty() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/SetClassProperty.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void complexNumber() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/ComplexNumber.class"});
+        virtualMachine.run();
+    }
+
+    @Test
+    public void loopsNumber() throws Exception {
+        VirtualMachine virtualMachine = new VirtualMachine(new String[]{"src/test/fixtures/demo/Loops.class"});
         virtualMachine.run();
     }
 }
