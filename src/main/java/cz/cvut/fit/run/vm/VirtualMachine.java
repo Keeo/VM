@@ -9,7 +9,6 @@ import cz.cvut.fit.run.vm.runtime.RuntimeEnvironment;
 import cz.cvut.fit.run.vm.runtime.java.lang.NString;
 import cz.cvut.fit.run.vm.runtime.java.lang.Object;
 
-import javax.print.attribute.standard.MediaSize;
 import java.io.IOException;
 
 /**
@@ -20,13 +19,13 @@ public class VirtualMachine {
 
     public static void main(String[] args) throws IOException {
         String[] classFiles = {
-                "src/test/fixtures/sat/SatSolver.class",
-                "src/test/fixtures/sat/Expression.class",
-                "src/test/fixtures/sat/ExpressionLink.class",
-                "src/test/fixtures/sat/Stack.class"
+            "src/test/fixtures/sat/SatSolver.class",
+            "src/test/fixtures/sat/Expression.class",
+            "src/test/fixtures/sat/ExpressionLink.class",
+            "src/test/fixtures/sat/Stack.class"
         };
         String[] classFiles2 = {
-                "src/test/fixtures/demo/Shifts.class",
+            "src/test/fixtures/demo/Shifts.class",
         };
         VirtualMachine virtualMachine = new VirtualMachine(classFiles);
         virtualMachine.run();

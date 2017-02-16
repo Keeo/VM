@@ -17,8 +17,8 @@ public class AALoad extends Instruction {
     public void execute(Frame frame, Stack<Frame> stack) {
         System.out.println("[I] AALoad");
 
-        ValueInteger index = (ValueInteger)frame.operandStack.pop();
-        ValueArrayReference valueArrayReference = (ValueArrayReference)frame.operandStack.pop();
+        ValueInteger index = (ValueInteger) frame.operandStack.pop();
+        ValueArrayReference valueArrayReference = (ValueArrayReference) frame.operandStack.pop();
         Value value = Heap.getInstance().heap[valueArrayReference.heap + index.integer];
         frame.operandStack.push(value);
 

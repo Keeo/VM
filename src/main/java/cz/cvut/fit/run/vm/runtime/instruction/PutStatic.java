@@ -5,7 +5,6 @@ import cz.cvut.fit.run.vm.classfile.constant.*;
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
-import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
 import java.util.Stack;
 

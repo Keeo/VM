@@ -17,7 +17,7 @@ public class ArrayClasses {
 
     public static void sumAndPrint(ArrayClasses[] arrayClasses) {
         int sum = 0;
-        for(int i = 0; i < arrayClasses.length; ++i) {
+        for (int i = 0; i < arrayClasses.length; ++i) {
             sum += arrayClasses[i].number;
         }
         print(sum);

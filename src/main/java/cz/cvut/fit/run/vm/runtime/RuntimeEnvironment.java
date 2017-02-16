@@ -1,7 +1,5 @@
 package cz.cvut.fit.run.vm.runtime;
 
-import cz.cvut.fit.run.vm.classfile.ClassProvider;
-
 import java.util.Stack;
 
 /**
@@ -18,7 +16,7 @@ public class RuntimeEnvironment {
 
     public void execute() {
         //while(!frames.isEmpty()) {
-            this.frames.peek().execute(frames);
+        this.frames.peek().execute(frames);
         //}
     }
 }

@@ -9,7 +9,7 @@ public abstract class Constant {
     public short type;
 
     public Constant(int type) {
-        this.type = (short)type;
+        this.type = (short) type;
     }
 
     public Constant(short type) {

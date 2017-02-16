@@ -6,7 +6,9 @@ import cz.cvut.fit.run.vm.classfile.attribute.ConstantValue;
 import cz.cvut.fit.run.vm.classfile.attribute.NotImplementedAttribute;
 import cz.cvut.fit.run.vm.classfile.constant.*;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 /**

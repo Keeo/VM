@@ -12,14 +12,7 @@ public class Shifts {
         }
     }
 
-//    public static void print(int val) {
-//        System.out.print(val);
-//    }
-//
-//    public static void printChar(char val) {
-//        System.out.print(val);
-//    }
-
     public static native void print(int val);
+
     public static native void printChar(char val);
 }

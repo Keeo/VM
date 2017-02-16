@@ -7,7 +7,6 @@ import cz.cvut.fit.run.vm.classfile.facade.FField;
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.Heap;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
-import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
 import java.util.Stack;
@@ -36,7 +35,7 @@ public class GetField extends Instruction {
         ConstantClass constantClass = (ConstantClass) constants[constantFieldref.classIndex];
         String className = ((ConstantUtf8) constants[constantClass.index]).string;
         FClass fClass = VirtualMachine.classProvider.getClass(className);
-        assert(fClass != null);
+        assert (fClass != null);
 
         int position = 0;
         for (FField fField : fClass.getFields()) {

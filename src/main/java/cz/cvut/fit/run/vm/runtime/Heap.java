@@ -1,17 +1,13 @@
 package cz.cvut.fit.run.vm.runtime;
 
-import com.sun.beans.decoder.ValueObject;
 import cz.cvut.fit.run.vm.VirtualMachine;
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.classfile.facade.FField;
-import cz.cvut.fit.run.vm.runtime.java.lang.NString;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
 import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
 import cz.cvut.fit.run.vm.runtime.operant.ValueInteger;
 import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.ArrayList;
 
 /**
  * Created by Keo on 9.12.2015.
@@ -65,7 +61,7 @@ public class Heap {
 
     public ValueArrayReference createArray(int type, int size) {
         ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
-        for(int i = position; i < size + position; ++i) {
+        for (int i = position; i < size + position; ++i) {
             switch (type) {
                 case 4:
                 case 5:
@@ -86,7 +82,7 @@ public class Heap {
     public ValueArrayReference createObjectArray(FClass fClass, int size) {
         ValueArrayReference valueArrayReference = new ValueArrayReference(position, size);
 
-        for(int i = position; i < size + position; ++i) {
+        for (int i = position; i < size + position; ++i) {
             heap[i] = new ValueObjectReference(fClass, i);
         }
         position += size;

@@ -1,11 +1,9 @@
 package cz.cvut.fit.run.vm.classfile.facade;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import cz.cvut.fit.run.vm.classfile.ClassFile;
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantClass;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
-import org.omg.CORBA.FREE_MEM;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -47,7 +45,7 @@ public class FClass {
     }
 
     public FMethod getMethod(String name) {
-        for(FMethod fMethod : getMethods()) {
+        for (FMethod fMethod : getMethods()) {
             if (fMethod.getName().equals(name)) {
                 return fMethod;
             }
@@ -58,14 +56,14 @@ public class FClass {
 
     public FField[] getFields() {
         FField[] fFields = new FField[classFile.fields.length];
-        for(int i = 0; i < fFields.length; i++) {
+        for (int i = 0; i < fFields.length; i++) {
             fFields[i] = new FField(this, classFile.fields[i]);
         }
         return fFields;
     }
 
     public FField getField(String name) {
-        for(FField fField : getFields()) {
+        for (FField fField : getFields()) {
             if (fField.getName().equals(name)) {
                 return fField;
             }
@@ -91,13 +89,13 @@ public class FClass {
         throw new RuntimeException("We were not able to find field we wanted.");
     }
 
-    /**\
+    /**
+     * \
      * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-2.html#jvms-2.9
      */
     public FMethod getClassInitMethod() {
-        for(FMethod fMethod : this.getMethods()) {
-            if (fMethod.getName().equals("<cinit>") &&
-                    fMethod.getDescription().equals("()V")) {
+        for (FMethod fMethod : this.getMethods()) {
+            if (fMethod.getName().equals("<cinit>") && fMethod.getDescription().equals("()V")) {
                 return fMethod;
             }
         }
@@ -113,6 +111,7 @@ public class FClass {
      * https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html#jvms-5.5
      */
     boolean isInitialized = false;
+
     public void initialize() {
         if (isInitialized) {
             return;

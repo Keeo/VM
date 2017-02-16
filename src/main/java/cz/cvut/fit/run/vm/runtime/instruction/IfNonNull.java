@@ -21,7 +21,7 @@ public class IfNonNull extends Instruction {
         System.out.println("[I] IfNotNull");
 
         Value value = frame.operandStack.pop();
-        assert(value instanceof ReferenceInterface);
+        assert (value instanceof ReferenceInterface);
         if (((ReferenceInterface) value).isNull()) {
             frame.pc += 3;
         } else {

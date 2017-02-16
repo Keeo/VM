@@ -21,7 +21,7 @@ public class IfNull extends Instruction {
         System.out.println("[I] IfNull");
 
         Value value = frame.operandStack.pop();
-        assert(value instanceof ReferenceInterface);
+        assert (value instanceof ReferenceInterface);
         if (((ReferenceInterface) value).isNull()) {
             frame.pc += offset;
         } else {

@@ -12,7 +12,7 @@ public class Loops {
     static void whileCycle() {
         int i = 0;
         int j = 10;
-        while(i < j) {
+        while (i < j) {
             i += i + 1;
         }
         print(i);
@@ -20,7 +20,7 @@ public class Loops {
 
     static void forCycle() {
         int a = 0;
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             a += i;
         }
         print(a);

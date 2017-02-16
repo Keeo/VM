@@ -1,8 +1,6 @@
 package cz.cvut.fit.run.vm.classfile.facade;
 
-import cz.cvut.fit.run.vm.classfile.ClassFile;
 import cz.cvut.fit.run.vm.classfile.ClassProvider;
-import cz.cvut.fit.run.vm.classfile.Method;
 
 import java.util.HashMap;
 import java.util.Map;

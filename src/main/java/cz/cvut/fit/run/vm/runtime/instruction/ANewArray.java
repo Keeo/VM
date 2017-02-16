@@ -3,7 +3,6 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 import cz.cvut.fit.run.vm.VirtualMachine;
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantClass;
-import cz.cvut.fit.run.vm.classfile.constant.ConstantMethodref;
 import cz.cvut.fit.run.vm.classfile.constant.ConstantUtf8;
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
 import cz.cvut.fit.run.vm.runtime.Frame;
@@ -29,7 +28,7 @@ public class ANewArray extends Instruction {
 
         Constant[] constants = frame.fMethod.fClass.getConstants();
         ConstantClass constantClass = (ConstantClass) constants[index];
-        String className = ((ConstantUtf8)constants[constantClass.index]).string;
+        String className = ((ConstantUtf8) constants[constantClass.index]).string;
         FClass fClass = VirtualMachine.classProvider.getClass(className);
 
         ValueInteger size = (ValueInteger) frame.operandStack.pop();

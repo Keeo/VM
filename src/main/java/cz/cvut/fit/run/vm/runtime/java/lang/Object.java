@@ -1,6 +1,5 @@
 package cz.cvut.fit.run.vm.runtime.java.lang;
 
-import cz.cvut.fit.run.vm.classfile.Method;
 import cz.cvut.fit.run.vm.classfile.attribute.Code;
 import cz.cvut.fit.run.vm.classfile.constant.Constant;
 import cz.cvut.fit.run.vm.classfile.facade.FClass;
@@ -41,7 +40,7 @@ public class Object extends FClass {
 
             @Override
             public byte[] getCode() {
-                return new byte[]{(byte)0xb1};
+                return new byte[]{(byte) 0xb1};
             }
 
             @Override

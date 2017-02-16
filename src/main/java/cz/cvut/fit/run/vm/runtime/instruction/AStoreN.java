@@ -2,8 +2,6 @@ package cz.cvut.fit.run.vm.runtime.instruction;
 
 import cz.cvut.fit.run.vm.runtime.Frame;
 import cz.cvut.fit.run.vm.runtime.operant.Value;
-import cz.cvut.fit.run.vm.runtime.operant.ValueArrayReference;
-import cz.cvut.fit.run.vm.runtime.operant.ValueObjectReference;
 
 import java.util.Stack;
 

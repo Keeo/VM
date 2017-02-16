@@ -20,7 +20,7 @@ public class ALoadN extends Instruction {
     public void execute(Frame frame, Stack<Frame> stack) {
         this.echo("n: " + n);
         Value valueReference = frame.locals[n];
-        assert(valueReference instanceof ReferenceInterface);
+        assert (valueReference instanceof ReferenceInterface);
         frame.operandStack.push(valueReference);
         frame.pc += 1;
     }
